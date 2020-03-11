@@ -7,7 +7,7 @@ author: Matt Stevans
 thumbnail: /assests/images/galaxies_thumb.jpg
 ---
 
-*Reposted from [askanastronomer.org](askanastronomer.org).* 
+*Reposted from [askanastronomer.org](http://www.askanastronomer.org).* 
 
 This is a question submitted to askanastronomer.org that I answer back in 2015.
 
