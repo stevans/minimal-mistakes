@@ -1,1 +1,1 @@
-Made with #Minimal Mistakes Jekyll theme(https://mmistakes.github.io/minimal-mistakes/)
+Made with Minimal Mistakes Jekyll theme(https://mmistakes.github.io/minimal-mistakes/)
