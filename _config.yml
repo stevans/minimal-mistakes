@@ -95,7 +95,7 @@ analytics:
 author:
   name             : "Matt Stevans"
   avatar           : "/assets/images/tight_crop_1MB.jpeg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "Data Scientist and Astrophysicist"
+  bio              : "Astrophysicist and Data Scientist"
   location         : "Austin, TX"
   email            : "stevans@utexas.edu"
   links:
