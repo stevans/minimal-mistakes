@@ -7,8 +7,9 @@ author: Matt Stevans
 thumbnail: /assests/images/galaxies_thumb.jpg
 ---
 
+{% include figure image_path="/assets/images/galaxies.jpg" alt="image" caption="An eclectic mix of galaxies. Credit: NASA, ESA, J. Blakeslee and H. Ford (Johns Hopkins University). Source: [HubbleSite](http://hubblesite.org/newscenter/archive/releases/2004/21/image/a/">HubbleSite)" %}
 
-{% include figure image_path="/assets/images/galaxies.jpg" alt="image" caption="An eclectic mix of galaxies. Credit: NASA, ESA, J. Blakeslee and H. Ford (Johns Hopkins University). Source: [HubbleSite](http://hubblesite.org/newscenter/archive/releases/2004/21/image/a/">HubbleSite) %}
+
 
 **When I took physics in college, I seem to remember a formula that related the wavelength of light to its energy. Could the wavelength of a photon of light be altered by a loss of energy, however small, over its path through intergalactic space?**
 
