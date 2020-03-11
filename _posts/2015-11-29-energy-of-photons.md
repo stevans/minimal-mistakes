@@ -1,9 +1,10 @@
 ---
 layout: post
 title: Does the wavelength of a photon change over its travel through intergalactic space?
+subtitle: reposted from askanastronomer.org
 author: Matt Stevans
 #categories: other
-thumbnail: http://askanastronomer.org/img/galaxies_thumb.jpg
+thumbnail: /assests/images/galaxies_thumb.jpg
 ---
 <div class="image">
 <img src="/assets/images/galaxies.jpg">
