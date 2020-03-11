@@ -24,6 +24,6 @@ over cosmic time. To do this, I use large multi-wavelegnth imaging surveys and
 machine learning to measure the physical properties of millions of galaxies. 
 My Ph.D. thesis "Investigating Star-formation and Quiescence of Massive 
 Galaxies in the Early Universe Using Wide-Field Imaging" explores the evolution of 
-the most massive galaxies when the universe of less than 1/10 its current age. 
+the most massive galaxies when the universe was less than 1/10 its current age. 
 A list of my research papers can be found on
 [here.](https://arxiv.org/search/?searchtype=author&query=Stevans%2C+M)
