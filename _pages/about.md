@@ -9,7 +9,7 @@ comments: true
 I am a recent graduate from the astrophysics Ph.D. program at the
 University of Texas at Austin working in the field of galaxy evolution.
 My interest in using the scientific method to understand and solve 
-problems has grown to include problems that impact humans in their day-to-day lives.
+problems has grown to include problems that impact people in their day-to-day lives.
 This has led me to pursue a career in data science.
 
 The root of my passion for astronomy lies in investigating large datasets to
