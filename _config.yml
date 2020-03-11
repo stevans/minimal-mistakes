@@ -94,7 +94,7 @@ analytics:
 # Site Author
 author:
   name             : "Matt Stevans"
-  avatar           : "/assets/images/tight-crop.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/tight-crop.jpeg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Data Scientist and Astronomy Ph.D."
   location         : "Austin, TX"
   email            : "stevans@utexas.edu"
@@ -113,10 +113,13 @@ author:
       # url: "https://facebook.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-       url: "https://github.com/stevans"
+      url: "https://github.com/stevans"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://linkedin.com/in/matt-stevans-49932065"
 
 # Site Footer
 footer:
