@@ -94,14 +94,14 @@ analytics:
 # Site Author
 author:
   name             : "Matt Stevans"
-  avatar           : "/assets/images/tight-crop.jpeg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/tight_crop_1MB.jpeg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Data Scientist and Astronomy Ph.D."
   location         : "Austin, TX"
   email            : "stevans@utexas.edu"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: mailto:stevans@utexas.edu
+      #url: mailto:stevans@utexas.edu
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
