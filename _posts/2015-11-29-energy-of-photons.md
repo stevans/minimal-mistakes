@@ -2,7 +2,7 @@
 layout: single
 title: Does the wavelength of a photon change over its travel through intergalactic space?
 subtitle: reposted from askanastronomer.org
-date:   2015-11-29
+date: 2015-11-29
 author: Matt Stevans
 thumbnail: /assests/images/galaxies_thumb.jpg
 ---
@@ -10,8 +10,6 @@ thumbnail: /assests/images/galaxies_thumb.jpg
 *Reposted from [askanastronomer.org](askanastronomer.org).* 
 
 This is a question submitted to askanastronomer.org that I answer back in 2015.
-
-{% include figure image_path="/assets/images/galaxies.jpg" alt="image" caption="An eclectic mix of galaxies. Credit: NASA, ESA, J. Blakeslee and H. Ford (Johns Hopkins University). Source: [HubbleSite](http://hubblesite.org/newscenter/archive/releases/2004/21/image/a/">HubbleSite)" %}
 
 **When I took physics in college, I seem to remember a formula that related the wavelength of light to its energy. Could the wavelength of a photon of light be altered by a loss of energy, however small, over its path through intergalactic space?**
 
