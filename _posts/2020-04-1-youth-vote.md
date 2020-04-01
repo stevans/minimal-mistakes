@@ -1,8 +1,10 @@
 layout: single
 title:  "Using Census data to understand shifts in the electorate"
-<!---"Youth voters make up smallest share of US electorate ever"--->
 date:   2020-4-1
 ---
+
+<!---"Youth voters make up smallest share of US electorate ever"--->
+
 
 After Super Tuesday, Young voters were often scapegoated by the media for Bernie’s loses in Super Tuesday contests (e.g. [Many young voters sat out Super Tuesday, contributing to Bernie Sanders’ losses](https://www.usatoday.com/story/news/politics/elections/2020/03/04/super-tuesday-bernie-sanders-youth-votes-fell-short-compared-2016/4947795002/)). Their reasoning was that a lot of [polling](https://nymag.com/intelligencer/2020/02/this-one-chart-explains-why-young-voters-back-bernie-sanders.html) before Super Tuesday showed Bernie strongly favored by younger voters and strongly disfavored by older voters. So for Bernie to have lost, young people must not have made it to the polls. Does exiting polling support this idea? To see, I compared the available 2020 CNN exit (and entrance) [polling](https://www.cnn.com/election/2020/entrance-and-exit-polls/) numbers to those in [2016](https://www.cnn.com/election/2016/primaries/polls/) for states that voted on or before Super Tuesday in both years. As can be seen in the following table, exit polling shows that youth voters made up a smaller percentage of voters in 13 of 15 states in 2020.
 
