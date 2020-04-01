@@ -7,9 +7,9 @@ author: Matt Stevans
 thumbnail: /assests/images/galaxies_thumb.jpg
 ---
 
-*Reposted from [askanastronomer.org](http://www.askanastronomer.org).* 
+*Reposted from [AskAnAstronomer.org](http://www.askanastronomer.org).* 
 
-This is a question submitted to askanastronomer.org that I answer back in 2015.
+This is a question submitted to AskAnAstronomer.org that I answer back in 2015.
 
 <!-- {% include figure image_path="/assets/images/galaxies.jpg" alt="image" caption="An eclectic mix of galaxies. Credit: NASA, ESA, J. Blakeslee and H. Ford (Johns Hopkins University). Source: [HubbleSite](http://hubblesite.org/newscenter/archive/releases/2004/21/image/a/">HubbleSite)" %} -->
 
