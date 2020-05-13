@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Does the wavelength of a photon change over its travel through intergalactic space?
+title: Does the wavelength of a photon change during its travel through intergalactic space?
 subtitle: reposted from askanastronomer.org
 date: 2015-11-29
 author: Matt Stevans
@@ -11,9 +11,9 @@ thumbnail: /assests/images/galaxies_thumb.jpg
 
 This is a question submitted to AskAnAstronomer.org that I answered back in 2015.
 
-**When I took physics in college, I seem to remember a formula that related the wavelength of light to its energy. Could the wavelength of a photon of light be altered by a loss of energy, however small, over its path through intergalactic space?**
+**"When I took physics in college, I seem to remember a formula that related the wavelength of light to its energy. Could the wavelength of a photon of light be altered by a loss of energy, however small, over its path through intergalactic space?**
 
-**If that were true, looking at a trip of millions / billions of light years... wouldn't that have some effect on our measurements of redshift, distances, and the expansion rate of the universe?**
+**"If that were true, looking at a trip of millions / billions of light years... wouldn't that have some effect on our measurements of redshift, distances, and the expansion rate of the universe?"**
 
 
 The answer to your first question is yes, for all intents and purposes, photons traveling through intergalactic space could, and in fact do, lose energy due to the [expansion of spacetime](https://en.wikipedia.org/wiki/Metric_expansion_of_space) in the Universe. As the photons lose energy their wavelengths become longer. As you recall, there is a formula that relates a photon’s energy to it’s wavelength: E = h*c/lambda, or in words, the energy of photon equals Planck’s constant times the speed of light divided by the photon’s wavelength. [Click here](https://en.wikipedia.org/wiki/Photon_energy) for a more detailed discussion of this equation.

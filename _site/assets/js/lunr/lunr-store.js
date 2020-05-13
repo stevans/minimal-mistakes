@@ -1,6 +1,6 @@
 var store = [{
-        "title": "Does the wavelength of a photon change over its travel through intergalactic space?",
-        "excerpt":"Reposted from AskAnAstronomer.org. This is a question submitted to AskAnAstronomer.org that I answered back in 2015. When I took physics in college, I seem to remember a formula that related the wavelength of light to its energy. Could the wavelength of a photon of light be altered by a loss...","categories": [],
+        "title": "Does the wavelength of a photon change during its travel through intergalactic space?",
+        "excerpt":"Reposted from AskAnAstronomer.org. This is a question submitted to AskAnAstronomer.org that I answered back in 2015. “When I took physics in college, I seem to remember a formula that related the wavelength of light to its energy. Could the wavelength of a photon of light be altered by a loss...","categories": [],
         "tags": [],
         "url": "http://localhost:4000/energy-of-photons/",
         "teaser": null
@@ -9,11 +9,5 @@ var store = [{
         "excerpt":"This is a test. This is only a test.   Header   A link is  here.                     A planet.            ","categories": [],
         "tags": [],
         "url": "http://localhost:4000/test/",
-        "teaser": null
-      },{
-        "title": "Using Census data to understand the shrinking potential of the youth vote",
-        "excerpt":"After Super Tuesday, young voters were frequently scapegoated by the media for Bernie Sanders’s loses in Super Tuesday contests like in this US Today article), entitled, Many young voters sat out Super Tuesday, contributing to Bernie Sanders’ losses. Their reasoning was that a lot of polling before Super Tuesday showed...","categories": [],
-        "tags": [],
-        "url": "http://localhost:4000/youth-vote/",
         "teaser": null
       }]
