@@ -9,7 +9,7 @@ thumbnail: /assests/images/galaxies_thumb.jpg
 
 *Reposted from [AskAnAstronomer.org](http://www.askanastronomer.org).* 
 
-This is a question submitted to AskAnAstronomer.org that I answer back in 2015.
+This is a question submitted to AskAnAstronomer.org that I answered back in 2015.
 
 **When I took physics in college, I seem to remember a formula that related the wavelength of light to its energy. Could the wavelength of a photon of light be altered by a loss of energy, however small, over its path through intergalactic space?**
 
