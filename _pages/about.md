@@ -1,5 +1,5 @@
 ---
-title:  "About"
+title:  "About Me"
 layout: archive
 permalink: /about/
 author_profile: true
@@ -11,13 +11,11 @@ University of Texas at Austin working in the field of galaxy evolution.
 My interest in using the scientific method to solve problems that 
 expand our collective understanding of the cosmos has grown to include problems 
 that impact people here on Earth. This is why I am pursuing a career in data science.
-
-I was drawn to astronomy by the idea of using large datasets to
-develop novel solutions and distill data-driven insights. I enjoy learning
-new analytic techniques and visualization methods that allow me to apply my
-experience as an astronomical researcher to non-astronomical problems, which
-I blog about here. In my free time, I enjoy running, playing soccer, 
-reading about politics, and cooking with my loving partner, Danielle.
+ 
+I’m drawn to extracting deep insights from large data sets. I enjoy learning
+new analytic techniques and visualization methods to share my findings with 
+others, which is why I stared this blog. In my free time, I enjoy running, 
+playing soccer, reading about politics, and cooking with my loving partner, Danielle.
 
 My astrophysics research focused on understanding the evolution of galaxies 
 over cosmic time. To do this, I used large multi-wavelegnth imaging surveys and 
