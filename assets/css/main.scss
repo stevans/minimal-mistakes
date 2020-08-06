@@ -7,17 +7,37 @@
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
-html {
-    font-size: 14px; // originally 16px
-    @include breakpoint($medium) {
-        font-size: 16px; // originally 18px
-    }
 
-    @include breakpoint($large) {
-        font-size: 18px; // originally 20px
-    }
 
-    @include breakpoint($x-large) {
-        font-size: 20px; // originally 22px
-    }
+input[type=checkbox] ~ span {
+    display:none;
+}
+
+input[type=checkbox]:checked ~ span {
+    display:inline;
+    font-size: 82%;
+    font-family: $monospace;
+    cursor:default;
+}
+
+input[type=checkbox]{
+    display:none;
+}
+
+input[type=checkbox] ~ label {
+    display:inline;
+    cursor: pointer;
+    color:$link-color;
+    text-decoration:underline;
+}
+
+input[type=checkbox] ~ label:hover {
+    text-decoration:underline;
+    cursor: pointer;
+    color:red;
+}
+
+input[type=checkbox]:checked ~ label {
+    color:red;
+    text-decoration:none;
 }
