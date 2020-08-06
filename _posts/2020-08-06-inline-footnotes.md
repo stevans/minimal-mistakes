@@ -45,6 +45,7 @@ input[type=checkbox]:checked ~ span {
     display:inline; 
     font-size: 85%;
     font-family:$monospace;
+    color: mix(#000, $text-color, 30%);
     cursor:default;
 }
 
