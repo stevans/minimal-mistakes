@@ -10,7 +10,7 @@ Click [here](#just-the-code) to jump to the code.
 I really enjoy reading the blog FiveThirtyEight for their data-driven reporting on politics, sports, and life. A stylistic feature of their blog that I find makes for a more pleasurable experience is the inline footnote feature. I like it so much that I found a way to mimic the feature on my blog using HTML and CSS. Here I share what I found incase others want to do something similar.
 
 ## FiveThirtyEight's Inline Footnotes
-The FiveThirtyEight inline footnote feature is basically where a footnote appears inline when the reader clicks on the footnote number. Here is a GIF demonstarting how a reader can toggle a footnote on the FiveThirtyEight site:
+The FiveThirtyEight inline footnote feature is basically where a footnote appears inline when the reader clicks on the footnote number. Here is a GIF demonstarting how a reader can toggle a footnote on the FiveThirtyEight [site](https://fivethirtyeight.com/features/what-does-an-0-7-start-tell-you-about-an-nfl-coach/):
 
 ![image-center]({{ site.url }}{{ site.baseurl }}/assets/images/posts/inline-footnotes/538-inline-footnote.gif){: .align-center}
 
