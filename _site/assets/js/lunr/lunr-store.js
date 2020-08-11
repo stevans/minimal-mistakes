@@ -1,6 +1,6 @@
 var store = [{
         "title": "Does the wavelength of a photon change during its travel through intergalactic space?",
-        "excerpt":"This is a post I wrote back in 2015 for AskAnAstronomer.org, a website where astrnonomers answer user-submitted space-related questions. “When I took physics in college, I seem to remember a formula that related the wavelength of light to its energy. Could the wavelength of a photon of light be altered...","categories": [],
+        "excerpt":"This is a post I wrote back in 2015 for AskAnAstronomer.org, a website where astrnonomers answer user-submitted space-related questions. Here is George’s question: “When I took physics in college, I seem to remember a formula that related the wavelength of light to its energy. Could the wavelength of a photon...","categories": [],
         "tags": [],
         "url": "http://localhost:4000/energy-of-photons/",
         "teaser": null
