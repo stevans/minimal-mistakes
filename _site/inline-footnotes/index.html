@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Adding inline footnotes in HTML and CSS - Galaxy Science to Data Science</title>
-<meta name="description" content="Click here to jump to the code.  ">
+<meta name="description" content="Click here to jump to the section with the code.  ">
 
 
   <meta name="author" content="Matt Stevans">
@@ -23,7 +23,7 @@
 <meta property="og:url" content="http://localhost:4000/inline-footnotes/">
 
 
-  <meta property="og:description" content="Click here to jump to the code.  ">
+  <meta property="og:description" content="Click here to jump to the section with the code.  ">
 
 
 
@@ -290,7 +290,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Adding inline footnotes in HTML and CSS">
-    <meta itemprop="description" content="Click here to jump to the code.">
+    <meta itemprop="description" content="Click here to jump to the section with the code.">
     <meta itemprop="datePublished" content="2020-08-06T00:00:00-05:00">
     
 
@@ -314,25 +314,25 @@
 
       <section class="page__content" itemprop="text">
         
-        <p class="notice--success">Click <a href="#just-the-code">here</a> to jump to the code.</p>
+        <p class="notice--success">Click <a href="#just-the-code">here</a> to jump to the section with the code.</p>
 
-<p>I really enjoy reading the blog FiveThirtyEight for their data-driven reporting on politics, sports, and life. A stylistic feature of their blog that I find makes for a more pleasurable experience is the inline footnote feature. I like it so much that I found a way to mimic the feature on my blog using HTML and CSS. Here I share what I found incase others want to do something similar.</p>
+<p>I really enjoy reading the blog <a href="https://fivethirtyeight.com/">FiveThirtyEight</a> for the data-driven reporting on politics, sports, and life. It is also the first place I recall encountering the inline footnotes some time in 2017. I remember being way too impressed when I clicked on a footnote, the remaining article text lowered creating a blank space, and the footnote appeared out of thin air. Now that I have my own blog, I want to give my reads the same pleasurable experience. Since I don’t know JavaScript, which 538 uses for their inline footnotes, my goal is to use HTML and CSS. In this post, I share what I’ve found for others who want to do something similar.</p>
 
 <h2 id="fivethirtyeights-inline-footnotes">FiveThirtyEight’s Inline Footnotes</h2>
-<p>The FiveThirtyEight inline footnote feature is basically where a footnote appears inline when the reader clicks on the footnote number. Here is a GIF demonstarting how a reader can toggle a footnote on the FiveThirtyEight <a href="https://fivethirtyeight.com/features/what-does-an-0-7-start-tell-you-about-an-nfl-coach/">site</a>:</p>
+<p>The FiveThirtyEight inline footnote feature allows a reader to view a footnote immediately after the footnote number by clicking on the footnote number. The reader can then hide the inline footnote by clicking on the “x” which appears in place of the clicked footnote number or continue scrolling through the text without hiding the footnote. Here is a GIF demonstarting how a reader can toggle a footnote in a 538 <a href="https://fivethirtyeight.com/features/what-does-an-0-7-start-tell-you-about-an-nfl-coach/">article</a>:</p>
 
 <p><img src="http://localhost:4000/assets/images/posts/inline-footnotes/538-inline-footnote.gif" alt="image-center" class="align-center" /></p>
 
-<p>To me, this is an elegant way to include extra details that some may find interesting but that aren’t important to the main idea of the article.</p>
+<p>To me, this is an elegant way to include extra details for the interested reader without requiring the efficient reader to be distracted from the main idea of the article.</p>
 
-<p>To replicate this on my own blog, I did what most people do–I Googled it. I found the basic HTML and CSS code I needed from the user Unrelated’s <a href="https://stackoverflow.com/questions/40336366/in-line-footnotes-with-only-html-css-in-notes/40391190#40391190">answer</a> to the question “In-line footnotes with only HTML/CSS (in-notes?)” on Stack Overflow, and I added some lines in the CSS to mimic the style of the feature on FiveThirtyEight. Here is a GIF of how it looks on my blog:</p>
+<p>To replicate this on my own blog, I did what most people do–I Googled it. I found the basic HTML and CSS code I needed from the user Unrelated’s <a href="https://stackoverflow.com/questions/40336366/in-line-footnotes-with-only-html-css-in-notes/40391190#40391190">answer</a> to the question “In-line footnotes with only HTML/CSS (in-notes?)” on Stack Overflow. To mimic the style of the feature on FiveThirtyEight I added some lines in the CSS to adjust the formating. Here is a GIF of how it looks on my blog:</p>
 
 <p><img src="http://localhost:4000/assets/images/posts/inline-footnotes/my-blog-inline-footnote.gif" alt="image-center" class="align-center" /></p>
 
-<p>Click on the following footnote to try it for yourself. <input type="checkbox" id="cb1" /><label for="cb1"><sup>1</sup></label><span><br /><br />This is the footnote text.<br /><br /></span> This sentence will move a few lines down.</p>
+<p>Click on the following footnote to try it for yourself. <input type="checkbox" id="cb2" /><label for="cb2"><sup>2</sup></label><span><br /><br />This is the footnote text.<br /><br /></span> This sentence (and the rest of the article) will move a few lines down. You can click the footnote number again to hide the footnote.</p>
 
-<h2 id="just-the-code">Just The Code</h2>
-<p>Here is a template of the HTML code:</p>
+<h2 id="the-code">The Code</h2>
+<p>Here is a template of the HTML code to insert within the text where you want the footnote number to appear:</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"cb1"</span> <span class="nt">/&gt;&lt;label</span> <span class="na">for=</span><span class="s">"cb1"</span><span class="nt">&gt;&lt;sup&gt;</span>1<span class="nt">&lt;/sup&gt;&lt;/label&gt;&lt;span&gt;&lt;br&gt;&lt;br&gt;</span>This is the footnote text.<span class="nt">&lt;br&gt;&lt;br&gt;&lt;/span&gt;</span>
 </code></pre></div></div>

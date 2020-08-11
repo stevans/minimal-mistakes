@@ -12,7 +12,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Adding inline footnotes in HTML and CSS",
-        "excerpt":"Click here to jump to the code. I really enjoy reading the blog FiveThirtyEight for their data-driven reporting on politics, sports, and life. A stylistic feature of their blog that I find makes for a more pleasurable experience is the inline footnote feature. I like it so much that I...","categories": [],
+        "excerpt":"Click here to jump to the section with the code. I really enjoy reading the blog FiveThirtyEight for the data-driven reporting on politics, sports, and life. It is also the first place I recall encountering the inline footnotes some time in 2017. I remember being way too impressed when I...","categories": [],
         "tags": [],
         "url": "http://localhost:4000/inline-footnotes/",
         "teaser": null
