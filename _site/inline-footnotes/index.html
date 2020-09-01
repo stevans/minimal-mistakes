@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Adding inline footnotes in HTML and CSS - Galaxy Science to Data Science</title>
-<meta name="description" content="Click here to jump to the section with the code.  ">
+<!-- begin _includes/seo.html --><title>Adding inline footnotes with automatic numbering in HTML and CSS - Galaxy Science to Data Science</title>
+<meta name="description" content="Updated! Now includes automatic numbering.  ">
 
 
   <meta name="author" content="Matt Stevans">
@@ -19,11 +19,11 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Galaxy Science to Data Science">
-<meta property="og:title" content="Adding inline footnotes in HTML and CSS">
+<meta property="og:title" content="Adding inline footnotes with automatic numbering in HTML and CSS">
 <meta property="og:url" content="http://localhost:4000/inline-footnotes/">
 
 
-  <meta property="og:description" content="Click here to jump to the section with the code.  ">
+  <meta property="og:description" content="Updated! Now includes automatic numbering.  ">
 
 
 
@@ -31,7 +31,7 @@
 
 
 
-  <meta property="article:published_time" content="2020-08-06T00:00:00-05:00">
+  <meta property="article:published_time" content="2020-09-01T00:00:00-05:00">
 
 
 
@@ -289,15 +289,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Adding inline footnotes in HTML and CSS">
-    <meta itemprop="description" content="Click here to jump to the section with the code.">
-    <meta itemprop="datePublished" content="2020-08-06T00:00:00-05:00">
+    <meta itemprop="headline" content="Adding inline footnotes with automatic numbering in HTML and CSS">
+    <meta itemprop="description" content="Updated! Now includes automatic numbering.">
+    <meta itemprop="datePublished" content="2020-09-01T00:00:00-05:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">Adding inline footnotes in HTML and CSS
+          <h1 id="page-title" class="page__title" itemprop="headline">Adding inline footnotes with automatic numbering in HTML and CSS
 </h1>
           
             <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
@@ -305,7 +305,7 @@
 
 
 
-  2 minute read
+  3 minute read
 
 </p>
           
@@ -314,32 +314,48 @@
 
       <section class="page__content" itemprop="text">
         
-        <p class="notice--success">Click <a href="#just-the-code">here</a> to jump to the section with the code.</p>
+        <p class="notice--success"><strong>Updated!</strong> Now includes automatic numbering.</p>
 
-<p>I really enjoy reading the blog <a href="https://fivethirtyeight.com/">FiveThirtyEight</a> for the data-driven reporting on politics, sports, and life. It is also the first place I recall encountering the inline footnotes some time in 2017. I remember being way too impressed when I clicked on a footnote, the remaining article text lowered creating a blank space, and the footnote appeared out of thin air. Now that I have my own blog, I want to give my reads the same pleasurable experience. Since I don’t know JavaScript, which 538 uses for their inline footnotes, my goal is to use HTML and CSS. In this post, I share what I’ve found for others who want to do something similar.</p>
+<p class="notice">To jump to the section with the code, <strong>click <a href="#the-code">here</a>!</strong></p>
+
+<p>I really enjoy reading the blog <a href="https://fivethirtyeight.com/">FiveThirtyEight</a> for the data-driven reporting on politics, sports, and life. It is also the first place I recall encountering inline footnotes some time back in 2017. I remember being way too impressed when I clicked on a footnote, the remaining article text lowered creating a blank space, and the footnote appeared out of thin air. Now that I have my own blog, I want to give my reads the same pleasurable experience. Since I don’t know JavaScript, which FiveThirtyEight uses for their inline footnotes, my goal is to use HTML and CSS. In this post, I share what I’ve found for those who want to do something similar.</p>
 
 <h2 id="fivethirtyeights-inline-footnotes">FiveThirtyEight’s Inline Footnotes</h2>
-<p>The FiveThirtyEight inline footnote feature allows a reader to view a footnote immediately after the footnote number by clicking on the footnote number. The reader can then hide the inline footnote by clicking on the “x” which appears in place of the clicked footnote number or continue scrolling through the text without hiding the footnote. Here is a GIF demonstarting how a reader can toggle a footnote in a 538 <a href="https://fivethirtyeight.com/features/what-does-an-0-7-start-tell-you-about-an-nfl-coach/">article</a>:</p>
+<p>The FiveThirtyEight inline footnote feature allows a reader to view a footnote immediately after the footnote number by clicking on the footnote number. The reader can then hide the inline footnote by clicking on the “x” which appears in place of the clicked footnote number or continue scrolling through the text without hiding the footnote. Here is a GIF demonstarting how a reader can toggle a footnote in a FiveThirtyEight <a href="https://fivethirtyeight.com/features/what-does-an-0-7-start-tell-you-about-an-nfl-coach/">article</a>:</p>
 
 <p><img src="http://localhost:4000/assets/images/posts/inline-footnotes/538-inline-footnote.gif" alt="image-center" class="align-center" /></p>
 
-<p>To me, this is an elegant way to include extra details for the interested reader without requiring the efficient reader to be distracted from the main idea of the article.</p>
+<p>To me, this is an elegant way to include ancillary information or commentary for the interested reader without slowing down the efficient reader and distracting from the main idea of the article.</p>
 
-<p>To replicate this on my own blog, I did what most people do–I Googled it. I found the basic HTML and CSS code I needed from the user Unrelated’s <a href="https://stackoverflow.com/questions/40336366/in-line-footnotes-with-only-html-css-in-notes/40391190#40391190">answer</a> to the question “In-line footnotes with only HTML/CSS (in-notes?)” on Stack Overflow. To mimic the style of the feature on FiveThirtyEight I added some lines in the CSS to adjust the formating. Here is a GIF of how it looks on my blog:</p>
+<p>To replicate this on my own blog, I did what most people do–I Googled it. I found the basic HTML and CSS code I needed from the user Unrelated’s <a href="https://stackoverflow.com/questions/40336366/in-line-footnotes-with-only-html-css-in-notes/40391190#40391190">answer</a> to the question “In-line footnotes with only HTML/CSS (in-notes?)” on Stack Overflow. To mimic the style of the feature on FiveThirtyEight, I added some lines in the CSS to adjust the aesthetics. Here is a GIF of how it looks on my blog:</p>
 
 <p><img src="http://localhost:4000/assets/images/posts/inline-footnotes/my-blog-inline-footnote.gif" alt="image-center" class="align-center" /></p>
 
-<p>Click on the following footnote to try it for yourself. <input type="checkbox" id="cb2" /><label for="cb2"><sup>2</sup></label><span><br /><br />This is the footnote text.<br /><br /></span> This sentence (and the rest of the article) will move a few lines down. You can click the footnote number again to hide the footnote.</p>
+<p>Click on the following footnote to try it for yourself. <input type="checkbox" id="cb1" /><label for="cb1"><sup></sup></label><span><br /><br />This is the footnote text.<br /><br /></span> This sentence (and the rest of the article) will move a few lines down. You can click the footnote number again to hide the footnote.</p>
 
 <h2 id="the-code">The Code</h2>
 <p>Here is a template of the HTML code to insert within the text where you want the footnote number to appear:</p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"cb1"</span> <span class="nt">/&gt;&lt;label</span> <span class="na">for=</span><span class="s">"cb1"</span><span class="nt">&gt;&lt;sup&gt;</span>1<span class="nt">&lt;/sup&gt;&lt;/label&gt;&lt;span&gt;&lt;br&gt;&lt;br&gt;</span>This is the footnote text.<span class="nt">&lt;br&gt;&lt;br&gt;&lt;/span&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"cb1"</span> <span class="nt">/&gt;&lt;label</span> <span class="na">for=</span><span class="s">"cb1"</span><span class="nt">&gt;&lt;sup&gt;&lt;/sup&gt;&lt;/label&gt;&lt;span&gt;&lt;br&gt;&lt;br&gt;</span>This is the footnote text.<span class="nt">&lt;br&gt;&lt;br&gt;&lt;/span&gt;</span>
 </code></pre></div></div>
+
+<p>Make sure the string after <code class="language-plaintext highlighter-rouge">id=</code> is unique AND matches the string after <code class="language-plaintext highlighter-rouge">for=</code>. Otherwise, clicking on any footnote link will do nothing or it will open (or close) the first occuring footnote at the position of the first occuring footnote. To get the padding or space infront of the footnote number, simply add a space before the input code.</p>
 
 <p>And here is the CSS code with comments:</p>
 
-<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/<span class="ge">* This initially hides the footnote (i.e. span)  *</span>/
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/<span class="ge">* This creates the counter  *</span>/
+body {
+  counter-reset: cb_counter_var;
+}
+
+/<span class="err">*</span> This increments the counter value and defines 
+the displayed content  <span class="err">*</span>/
+sup::after {
+  counter-increment: cb_counter_var;
+  content: counter(cb_counter_var);
+}
+
+/<span class="ge">* This initially hides the footnote (i.e. span)  *</span>/
 input<span class="p">[</span><span class="nv">type=checkbox</span><span class="p">]</span> ~ span {
     display:none; 
 }
@@ -385,6 +401,8 @@ input<span class="p">[</span><span class="nv">type=checkbox</span><span class="p
 
 <p>If you’re using the Jekyll theme called Minimal Mistakes like I am, you can learn how to update the style sheet <a href="https://mmistakes.github.io/minimal-mistakes/docs/stylesheets/">here</a> in the official Docs.</p>
 
+<p>My next footnote-related adventure is to figure out how to get the footnote numbering sequence to update programmatically… <strong>Update: I’ve implemented automatic numbering after discovering <a href="https://www.w3schools.com/css/css_counters.asp">CSS counters</a>.</strong> Here is a second footnote number as a demostration of the autmoatic numbering. <input type="checkbox" id="cb2" /><label for="cb2"><sup></sup></label><span><br /><br />Footnotes are cool.<br /><br /></span></p>
+
         
       </section>
 
@@ -394,7 +412,7 @@ input<span class="p">[</span><span class="nv">type=checkbox</span><span class="p
 
 
         
-          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-08-06T00:00:00-05:00">August 6, 2020</time></p>
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-09-01T00:00:00-05:00">September 1, 2020</time></p>
         
       </footer>
 
@@ -403,7 +421,7 @@ input<span class="p">[</span><span class="nv">type=checkbox</span><span class="p
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Adding+inline+footnotes+in+HTML+and+CSS%20http%3A%2F%2Flocalhost%3A4000%2Finline-footnotes%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Adding+inline+footnotes+with+automatic+numbering+in+HTML+and+CSS%20http%3A%2F%2Flocalhost%3A4000%2Finline-footnotes%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Finline-footnotes%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
@@ -414,7 +432,7 @@ input<span class="p">[</span><span class="nv">type=checkbox</span><span class="p
       
   <nav class="pagination">
     
-      <a href="/youth-vote/" class="pagination--pager" title="Using US Census APIs to investigate the drop in youth-voter turnout in 2020
+      <a href="/sanders-tx-2020/" class="pagination--pager" title="Using regression analysis to learn how Bernie Sanders’s Texan voter collation changed between 2016 and 2020
 ">Previous</a>
     
     
@@ -432,6 +450,38 @@ input<span class="p">[</span><span class="nv">type=checkbox</span><span class="p
     <div class="page__related">
       <h4 class="page__related-title">You may also enjoy</h4>
       <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/sanders-tx-2020/" rel="permalink">Using regression analysis to learn how Bernie Sanders’s Texan voter collation changed between 2016 and 2020
+</a>
+      
+    </h2>
+		<p class="page__meta">
+			<span style="margin-right: 1em;">
+				<i class="far fa-calendar-alt" aria-hidden="true"></i> August 31, 2020
+			</span>
+			
+				<i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  16 minute read
+
+
+			
+		</p>
+    <p class="archive__item-excerpt" itemprop="description">In this post I attempt to use multiple regression analysis on county-level demographics from the US Census to understand what types of voters drove the chang...</p>
+  </article>
+</div>
         
           
 

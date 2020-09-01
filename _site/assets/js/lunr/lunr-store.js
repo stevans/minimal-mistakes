@@ -11,8 +11,14 @@ var store = [{
         "url": "http://localhost:4000/youth-vote/",
         "teaser": null
       },{
-        "title": "Adding inline footnotes in HTML and CSS",
-        "excerpt":"Click here to jump to the section with the code. I really enjoy reading the blog FiveThirtyEight for the data-driven reporting on politics, sports, and life. It is also the first place I recall encountering the inline footnotes some time in 2017. I remember being way too impressed when I...","categories": [],
+        "title": "Using regression analysis to learn how Bernie Sanders’s Texan voter collation changed between 2016 and 2020",
+        "excerpt":"In this post I attempt to use multiple regression analysis on county-level demographics from the US Census to understand what types of voters drove the change in Bernie Sanders’s primary vote share between 2016 and 2020 in Texas. I find that the demographics of Texas at the county level are...","categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/sanders-tx-2020/",
+        "teaser": null
+      },{
+        "title": "Adding inline footnotes with automatic numbering in HTML and CSS",
+        "excerpt":"Updated! Now includes automatic numbering. To jump to the section with the code, click here! I really enjoy reading the blog FiveThirtyEight for the data-driven reporting on politics, sports, and life. It is also the first place I recall encountering inline footnotes some time back in 2017. I remember being...","categories": [],
         "tags": [],
         "url": "http://localhost:4000/inline-footnotes/",
         "teaser": null
