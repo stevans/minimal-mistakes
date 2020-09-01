@@ -4,6 +4,16 @@ title:  "Adding inline footnotes with automatic numbering in HTML and CSS"
 date: 2020-9-1 <!--- Orginally published on 2020-8-6 --->
 ---
 
+<!--- Minimal-mistakes has traditional footnotes. See here for example: https://mmistakes.github.io/minimal-mistakes/docs/layouts/#fnref:sidebar-menu
+
+The inline code looks like this:
+
+To create a sidebar menu[^sidebar-menu] similar to the one found in the theme's documentation pages you'll need to modify a `_data` file and some YAML Front Matter.
+
+[^sidebar-menu]: Sidebar menu supports 1 level of nested links.--->
+
+
+
 **Updated!** Now includes automatic numbering.
 {: .notice--success}
 
@@ -34,7 +44,10 @@ Here is a template of the HTML code to insert within the text where you want the
 <input type="checkbox" id="cb1" /><label for="cb1"><sup></sup></label><span><br><br>This is the footnote text.<br><br></span>
 ```
 
-Make sure the string after `id=` is unique AND matches the string after `for=`. Otherwise, clicking on any footnote link will do nothing or it will open (or close) the first occuring footnote at the position of the first occuring footnote. To get the padding or space infront of the footnote number, simply add a space before the input code.
+**Warning:** Make sure the string after `id=` is unique AND matches the string after `for=`. Otherwise, clicking on any footnote link will do nothing or it will open (or close) the first occuring footnote at the position of the first occuring footnote. 
+{: .notice--danger} 
+**Note:** To get the padding or space infront of the footnote number, simply add a space before the input code. 
+{: .notice}
 
 And here is the CSS code with comments:
 
@@ -95,6 +108,6 @@ input[type=checkbox]:checked ~ label {
 }
 ```
 
-If you’re using the Jekyll theme called Minimal Mistakes like I am, you can learn how to update the style sheet [here](https://mmistakes.github.io/minimal-mistakes/docs/stylesheets/) in the official Docs.
+**Note:** If you’re using the Jekyll theme called Minimal Mistakes like I am, you can learn how to update the style sheet [here](https://mmistakes.github.io/minimal-mistakes/docs/stylesheets/) in the official Docs. {: .notice}
 
 My next footnote-related adventure is to figure out how to get the footnote numbering sequence to update programmatically... **Update: I've implemented automatic numbering after discovering [CSS counters](https://www.w3schools.com/css/css_counters.asp).** Here is a second footnote number as a demostration of the autmoatic numbering. <input type="checkbox" id="cb2" /><label for="cb2"><sup></sup></label><span><br><br>Footnotes are cool.<br><br></span> 

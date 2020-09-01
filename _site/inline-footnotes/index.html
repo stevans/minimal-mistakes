@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Adding inline footnotes with automatic numbering in HTML and CSS - Galaxy Science to Data Science</title>
-<meta name="description" content="Updated! Now includes automatic numbering.  ">
+<meta name="description" content=" ">
 
 
   <meta name="author" content="Matt Stevans">
@@ -23,7 +23,7 @@
 <meta property="og:url" content="http://localhost:4000/inline-footnotes/">
 
 
-  <meta property="og:description" content="Updated! Now includes automatic numbering.  ">
+  <meta property="og:description" content=" ">
 
 
 
@@ -290,7 +290,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Adding inline footnotes with automatic numbering in HTML and CSS">
-    <meta itemprop="description" content="Updated! Now includes automatic numbering.">
+    <meta itemprop="description" content="">
     <meta itemprop="datePublished" content="2020-09-01T00:00:00-05:00">
     
 
@@ -314,7 +314,15 @@
 
       <section class="page__content" itemprop="text">
         
-        <p class="notice--success"><strong>Updated!</strong> Now includes automatic numbering.</p>
+        <!--- Minimal-mistakes has traditional footnotes. See here for example: https://mmistakes.github.io/minimal-mistakes/docs/layouts/#fnref:sidebar-menu
+
+The inline code looks like this:
+
+To create a sidebar menu[^sidebar-menu] similar to the one found in the theme's documentation pages you'll need to modify a `_data` file and some YAML Front Matter.
+
+[^sidebar-menu]: Sidebar menu supports 1 level of nested links.--->
+
+<p class="notice--success"><strong>Updated!</strong> Now includes automatic numbering.</p>
 
 <p class="notice">To jump to the section with the code, <strong>click <a href="#the-code">here</a>!</strong></p>
 
@@ -339,7 +347,8 @@
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">id=</span><span class="s">"cb1"</span> <span class="nt">/&gt;&lt;label</span> <span class="na">for=</span><span class="s">"cb1"</span><span class="nt">&gt;&lt;sup&gt;&lt;/sup&gt;&lt;/label&gt;&lt;span&gt;&lt;br&gt;&lt;br&gt;</span>This is the footnote text.<span class="nt">&lt;br&gt;&lt;br&gt;&lt;/span&gt;</span>
 </code></pre></div></div>
 
-<p>Make sure the string after <code class="language-plaintext highlighter-rouge">id=</code> is unique AND matches the string after <code class="language-plaintext highlighter-rouge">for=</code>. Otherwise, clicking on any footnote link will do nothing or it will open (or close) the first occuring footnote at the position of the first occuring footnote. To get the padding or space infront of the footnote number, simply add a space before the input code.</p>
+<p class="notice--danger"><strong>Warning:</strong> Make sure the string after <code class="language-plaintext highlighter-rouge">id=</code> is unique AND matches the string after <code class="language-plaintext highlighter-rouge">for=</code>. Otherwise, clicking on any footnote link will do nothing or it will open (or close) the first occuring footnote at the position of the first occuring footnote.</p>
+<p class="notice"><strong>Note:</strong> To get the padding or space infront of the footnote number, simply add a space before the input code.</p>
 
 <p>And here is the CSS code with comments:</p>
 
@@ -399,7 +408,7 @@ input<span class="p">[</span><span class="nv">type=checkbox</span><span class="p
 }
 </code></pre></div></div>
 
-<p>If you’re using the Jekyll theme called Minimal Mistakes like I am, you can learn how to update the style sheet <a href="https://mmistakes.github.io/minimal-mistakes/docs/stylesheets/">here</a> in the official Docs.</p>
+<p><strong>Note:</strong> If you’re using the Jekyll theme called Minimal Mistakes like I am, you can learn how to update the style sheet <a href="https://mmistakes.github.io/minimal-mistakes/docs/stylesheets/">here</a> in the official Docs. {: .notice}</p>
 
 <p>My next footnote-related adventure is to figure out how to get the footnote numbering sequence to update programmatically… <strong>Update: I’ve implemented automatic numbering after discovering <a href="https://www.w3schools.com/css/css_counters.asp">CSS counters</a>.</strong> Here is a second footnote number as a demostration of the autmoatic numbering. <input type="checkbox" id="cb2" /><label for="cb2"><sup></sup></label><span><br /><br />Footnotes are cool.<br /><br /></span></p>
 
