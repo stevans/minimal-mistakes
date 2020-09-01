@@ -3,7 +3,6 @@ layout: single
 title:  "Adding inline footnotes with automatic numbering in HTML and CSS"
 date: 2020-9-1 <!--- Orginally published on 2020-8-6 --->
 ---
-
 <!--- Minimal-mistakes has traditional footnotes. See here for example: https://mmistakes.github.io/minimal-mistakes/docs/layouts/#fnref:sidebar-menu
 
 The inline code looks like this:
@@ -11,13 +10,10 @@ The inline code looks like this:
 To create a sidebar menu[^sidebar-menu] similar to the one found in the theme's documentation pages you'll need to modify a `_data` file and some YAML Front Matter.
 
 [^sidebar-menu]: Sidebar menu supports 1 level of nested links.--->
-
-
-
 **Updated!** Now includes automatic numbering.
 {: .notice--success}
 
-To jump to the section with the code, **click [here](#the-code)!**
+To jump to the section with the code, **click [here](#the-code)**.
 {: .notice}
 
 I really enjoy reading the blog [FiveThirtyEight](https://fivethirtyeight.com/) for the data-driven reporting on politics, sports, and life. It is also the first place I recall encountering inline footnotes some time back in 2017. I remember being way too impressed when I clicked on a footnote, the remaining article text lowered creating a blank space, and the footnote appeared out of thin air. Now that I have my own blog, I want to give my reads the same pleasurable experience. Since I don't know JavaScript, which FiveThirtyEight uses for their inline footnotes, my goal is to use HTML and CSS. In this post, I share what I've found for those who want to do something similar.
@@ -108,6 +104,7 @@ input[type=checkbox]:checked ~ label {
 }
 ```
 
-**Note:** If you’re using the Jekyll theme called Minimal Mistakes like I am, you can learn how to update the style sheet [here](https://mmistakes.github.io/minimal-mistakes/docs/stylesheets/) in the official Docs. {: .notice}
+**Note:** If you’re using the Jekyll theme called Minimal Mistakes like I am, you can learn how to update the style sheet [here](https://mmistakes.github.io/minimal-mistakes/docs/stylesheets/) in the official Docs. 
+{: .notice}
 
 My next footnote-related adventure is to figure out how to get the footnote numbering sequence to update programmatically... **Update: I've implemented automatic numbering after discovering [CSS counters](https://www.w3schools.com/css/css_counters.asp).** Here is a second footnote number as a demostration of the autmoatic numbering. <input type="checkbox" id="cb2" /><label for="cb2"><sup></sup></label><span><br><br>Footnotes are cool.<br><br></span> 

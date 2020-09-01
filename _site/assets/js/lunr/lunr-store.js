@@ -18,7 +18,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Adding inline footnotes with automatic numbering in HTML and CSS",
-        "excerpt":"Updated! Now includes automatic numbering. To jump to the section with the code, click here! I really enjoy reading the blog FiveThirtyEight for the data-driven reporting on politics, sports, and life. It is also the first place I recall encountering inline footnotes some time back in 2017. I remember being...","categories": [],
+        "excerpt":"Updated! Now includes automatic numbering. To jump to the section with the code, click here. I really enjoy reading the blog FiveThirtyEight for the data-driven reporting on politics, sports, and life. It is also the first place I recall encountering inline footnotes some time back in 2017. I remember being...","categories": [],
         "tags": [],
         "url": "http://localhost:4000/inline-footnotes/",
         "teaser": null
