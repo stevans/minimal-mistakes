@@ -1,13 +1,233 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-09-01T11:36:39-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Galaxy Science to Data Science</title><subtitle>My personal website.</subtitle><author><name>Matt Stevans</name><email>stevans@utexas.edu</email></author><entry><title type="html">Adding inline footnotes with automatic numbering in HTML and CSS</title><link href="http://localhost:4000/inline-footnotes/" rel="alternate" type="text/html" title="Adding inline footnotes with automatic numbering in HTML and CSS" /><published>2020-09-01T00:00:00-05:00</published><updated>2020-09-01T00:00:00-05:00</updated><id>http://localhost:4000/inline-footnotes</id><content type="html" xml:base="http://localhost:4000/inline-footnotes/">&lt;!--- Minimal-mistakes has traditional footnotes. See here for example: https://mmistakes.github.io/minimal-mistakes/docs/layouts/#fnref:sidebar-menu
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-09-03T10:16:22-05:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Galaxy Science to Data Science</title><subtitle>My personal website.</subtitle><author><name>Matt Stevans</name><email>stevans@utexas.edu</email></author><entry><title type="html">Using regression to learn how Bernie Sanders’s voter coalition changed between 2016 and 2020 in Texas</title><link href="http://localhost:4000/sanders-tx-2020/" rel="alternate" type="text/html" title="Using regression to learn how Bernie Sanders’s voter coalition changed between 2016 and 2020 in Texas" /><published>2020-09-03T00:00:00-05:00</published><updated>2020-09-03T00:00:00-05:00</updated><id>http://localhost:4000/sanders-tx-2020</id><content type="html" xml:base="http://localhost:4000/sanders-tx-2020/">&lt;p&gt;In this post I present a multiple regression analysis on county-level demographics from the US Census with the aim of understanding what types of voters drove the change in Bernie Sanders’s primary vote share between 2016 and 2020 in Texas.&lt;/p&gt;
+
+&lt;p&gt;I find that the demographics of Texas at the county level are too correlated to permit a detailed and quantified understanding of how individual demographics relate to the change in Sanders’s vote share using multiple regression.&lt;/p&gt;
+
+&lt;p&gt;By building only simple models, I find Sanders’s Texas coalition lost non-Hispanic White voters and gained Hispanic voters between 2016 and 2020, which is consistent with trends in national opinion polling and exit polling.&lt;/p&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;This project idea came to me one day while I was reading a &lt;a href=&quot;https://fivethirtyeight.com/features/historic-turnout-in-2020-not-so-far/&quot;&gt;FiveThirtyEight article&lt;/a&gt; assessing whether the 2020 Democratic primaries were having record-breaking turnout. &lt;input type=&quot;checkbox&quot; id=&quot;intro&quot; /&gt;&lt;label for=&quot;intro&quot;&gt;&lt;sup&gt;&lt;/sup&gt;&lt;/label&gt;&lt;span&gt;&lt;br /&gt;&lt;br /&gt;They weren’t.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;In that article they mentioned performing a regression analysis on demographic data to understand the type of voter driving increases in voter turnout in the 15 states that had held primaries up to that point.&lt;/p&gt;
+
+&lt;p&gt;This got me thinking that the data must exist for me to do a similar regression analysis for my blog. This seemed like a great opportunity to further my understanding of regression modeling which I had encountered at a basic level many times in astronomy classrooms and to apply my skills in another domain that interests me—politics.&lt;/p&gt;
+
+&lt;h3 id=&quot;sanders-vote-share-decreased&quot;&gt;Sanders vote share decreased&lt;/h3&gt;
+
+&lt;p&gt;Bernies Sanders was a surprising success in the 2016 Democratic primaries finishing second with 13,210,550 million votes and winning 23 states’ primary elections. &lt;input type=&quot;checkbox&quot; id=&quot;wiki&quot; /&gt;&lt;label for=&quot;wiki&quot;&gt;&lt;sup&gt;&lt;/sup&gt;&lt;/label&gt;&lt;span&gt;&lt;br /&gt;&lt;br /&gt;Stats from the Wikipedia article: &lt;a href=&quot;https://en.wikipedia.org/wiki/Results_of_the_2016_Democratic_Party_presidential_primaries&quot;&gt;Results of the 2016 Democratic Party presidential primaries&lt;/a&gt;. &lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;In the 2020 primary, he had a marked drop in vote share in national polling due, in part, to the crowded field of candidates. In Texas, Sanders went from earning 33.2% of all votes in 2016 to 29.9% in 2020. &lt;input type=&quot;checkbox&quot; id=&quot;raw&quot; /&gt;&lt;label for=&quot;raw&quot;&gt;&lt;sup&gt;&lt;/sup&gt;&lt;/label&gt;&lt;span&gt;&lt;br /&gt;&lt;br /&gt;His raw votes went up from 476,547 to 626,339.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Exit polling by CNN showed Sanders’s vote share of individual demographics dropped in all categories except vote share of Hispanics. Most notably, Sanders’s vote share of Whites (presumably non-Hispanic) dropped from 41% to 29%, his vote share of Hispanics increased from 29% to 40%, and his vote share Blacks stayed at 15%. &lt;input type=&quot;checkbox&quot; id=&quot;cnn&quot; /&gt;&lt;label for=&quot;cnn&quot;&gt;&lt;sup&gt;&lt;/sup&gt;&lt;/label&gt;&lt;span&gt;&lt;br /&gt;&lt;br /&gt;CNN exiting polls of Texas in &lt;a href=&quot;https://www.cnn.com/election/2016/primaries/polls/tx/Dem&quot;&gt;2016&lt;/a&gt; and &lt;a href=&quot;https://www.cnn.com/election/2020/primaries-caucuses/entrance-and-exit-polls/texas/democratic&quot;&gt;2020&lt;/a&gt;.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;using-regression-with-demographics&quot;&gt;Using regression with demographics&lt;/h3&gt;
+
+&lt;p&gt;Regression analysis is a powerful tool for understanding the relation between properties of a population. Regressing on demographics has been used to understand their relationship to election outcomes in a variety of ways including &lt;a href=&quot;https://fivethirtyeight.com/features/how-fivethirtyeight-2020-primary-model-works/&quot;&gt;election forecasting&lt;/a&gt;, &lt;a href=&quot;https://projecteuclid.org/download/pdf_1/euclid.ss/1049993203&quot;&gt;identifying irregularities in voting&lt;/a&gt; in the pivotal state of Florida in the 2000 presidential election, and &lt;a href=&quot;https://fivethirtyeight.com/features/historic-turnout-in-2020-not-so-far/&quot;&gt;understanding what type of voter drove increases&lt;/a&gt; in voter turnout in the 2020 Democratic primaries.&lt;/p&gt;
+
+&lt;p&gt;I debated with myself for a long time on the correct type of regression model to use for this analysis. While a negative binomial or Poisson regression analysis is appropriate because election data and most demographic data are fundamentally counting data, I have very little experience with these regression types. On the other hand, I’m very familiar with ordinary least squares (OLS) linear regression, which is the most popular so there’s tons of resources online, and it is the easiest to interpret. Plus, OLS can be used with counting data if they’re transformed to fractions or percentages of total, at the cost of introducing some correlation between related variables. Ultimately, I settled on using OLS because I knew that my analysis met at least some of the &lt;a href=&quot;https://statisticsbyjim.com/regression/multicollinearity-in-regression-analysis/&quot;&gt;seven classical OLS assumptions&lt;/a&gt; and that the assumptions can assessed after a model was built by using diagnostics plots like residual plots. Put simply, as long as the observations of the error term in the linear model have constant variance and they are uncorrelated with each other and uncorrelated with the independent variables, then OLS can be used.&lt;/p&gt;
+
+&lt;p&gt;One of the perks of OLS is that it is easy to interpret. It allows you to understand quantitatively how the independent variables (in our case demographic variables) each relate to the dependent variable (e.g., the decrease in Sanders’s total vote share). The relationship comes straight from the model coefficients; a change of one unit in independent variable “A” leads to a change in the dependent variable equal to the coefficient of “A” with all other variables being held constant.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-data&quot;&gt;The data&lt;/h2&gt;
+
+&lt;p&gt;To build a precise and interpretable model, independent variables must be chosen based on a &lt;a href=&quot;https://statisticsbyjim.com/regression/model-specification-variable-selection/&quot;&gt;strong theoretical understanding&lt;/a&gt; of the system under investigation. In place of a full literature review on how demographics relate to election outcomes, I adopted the demographic variables used by the election experts at FiveThirtyEight for their &lt;a href=&quot;https://fivethirtyeight.com/features/a-users-guide-to-fivethirtyeights-2016-general-election-forecast/&quot;&gt;2016 general&lt;/a&gt; and &lt;a href=&quot;https://fivethirtyeight.com/features/how-fivethirtyeight-2020-primary-model-works/&quot;&gt;2020 primary&lt;/a&gt; election forecast models. The demographic variables they use are related to race, education, income, an urban/rural measure (population density), religion, and liberal-conservative lean. Here is the list of variables I were able to collect that most closely match those used by FiveThirtyEight:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;White non-Hispanic&lt;/li&gt;
+  &lt;li&gt;White Hispanic&lt;/li&gt;
+  &lt;li&gt;Black&lt;/li&gt;
+  &lt;li&gt;Other race&lt;/li&gt;
+  &lt;li&gt;Fraction with a 4-yr degree&lt;/li&gt;
+  &lt;li&gt;Mean per capita income&lt;/li&gt;
+  &lt;li&gt;Population density&lt;/li&gt;
+  &lt;li&gt;Black Protestant&lt;/li&gt;
+  &lt;li&gt;Catholic&lt;/li&gt;
+  &lt;li&gt;Evangelical&lt;/li&gt;
+  &lt;li&gt;Jewish&lt;/li&gt;
+  &lt;li&gt;Mainline&lt;/li&gt;
+  &lt;li&gt;Mormon&lt;/li&gt;
+  &lt;li&gt;Other religion&lt;/li&gt;
+  &lt;li&gt;Unclaimed religion&lt;/li&gt;
+  &lt;li&gt;Margin of victory of Democratic candidates in 2008-2016 presidential elections (a proxy for county partisan lean)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The race, education, income, and population density variables were pulled from the U.S. Census Bureau. I used US Census data from the American Community Survey (ACS) 5-year estimates accessed via the easy-to-use and well-documented python package&lt;a href=&quot;https://github.com/jtleider/censusdata&quot;&gt;censusdata&lt;/a&gt;. The past Presidential election results were pulled from &lt;a href=&quot;https://github.com/Data4Democracy&quot;&gt;Data for Democracy’s&lt;/a&gt; &lt;a href=&quot;https://data.world/data4democracy/election-transparency&quot;&gt;data.world election transparency page&lt;/a&gt;. The 2016 and 2020 primary election results were gathered from the &lt;a href=&quot;https://www.sos.state.tx.us/elections/historical/elections-results-archive.shtml&quot;&gt;Texas Secretary of State website&lt;/a&gt;. The religious adherence data were pulled from the Association of Religious Data Archives, &lt;a href=&quot;http://www.thearda.com/Archive/Files/Descriptions/RCMSCY10.asp&quot;&gt;U.S. Religion Census, 2010&lt;/a&gt;. The Census and elections data are of high quality and have no missing data. The religious data are from 2010 (the latest available) and was collected via self reporting by congregations. Some congregations draw adherents from neighboring counties leading to some counties having more religious adherents than total population. Adherents outside of the 236 groups included in the study are combined with non-religious people in the “Unclaimed religion” category. I used data at the county level because counties are the smallest unit of comprehensive coverage shared by all of our data sources and the level at which the state of Texas collects and reports election results.&lt;/p&gt;
+
+&lt;p&gt;A comment on training/test split:
+Typically when building a model a test sample is left out to test the final model for over fitting. We did not leave out a test set because we wanted to train on as much of our small sample (254 counties) as possible, and we will not be using our model to make predictions. We assessed the over-fitting of our model with the predicted R^2 quantity which is similar to leave-one-out cross validation.&lt;/p&gt;
+
+&lt;h2 id=&quot;building-a-model&quot;&gt;Building a model&lt;/h2&gt;
+
+&lt;h3 id=&quot;exploratory-plots-and-observations&quot;&gt;Exploratory plots and observations&lt;/h3&gt;
+
+&lt;p&gt;Figure 1 plots the difference in Bernie Sanders’s vote share percentage in 2016 and 2020, our dependent variable, against a number of covariates.&lt;/p&gt;
+&lt;figure class=&quot;align-center&quot;&gt;
+  &lt;img src=&quot;http://localhost:4000/assets/images/posts/sanders-tx-2020/Figure-scatter.png&quot; alt=&quot;Scatter Plots&quot; /&gt;
+  &lt;figcaption&gt;Figure 1: The change in the Sanders vote share in Texas from 2016 to 2020 versus demographic covariates.&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;The plots show that the change in Sanders’s vote share is moderately anti-correlated with the percentage of White people; moderately correlated with the percentage of Hispanic people; weakly correlated with the percentage of Black people; and not obviously dependent on the percentage of people of other races; decreasing with the percentage of the population of a 4-year degree; decreasing with mean personal income; decreasing with the percentage of Evangelical adherents; increasing with the percentage of Catholic adherents; not obviously dependent on the percentage of Moron adherents, Black Protestant adherents, unclaimed adherents, and adherents of other religions; moderately correlated with the average margin of victory for the Democratic nominee in the past three presidential elections; and not obviously dependent on population density.&lt;/p&gt;
+
+&lt;p&gt;Out of curiosity, in the last two panels we plot the change in Sanders vote share versus Sanders’s vote share in 2016 and a list of (Gaussian-distributed) random numbers and see a strong anti-correlated in the former and (as expected) no apparent correlation in the latter.&lt;/p&gt;
+
+&lt;p&gt;The percentage of Mormon, Black Protestant and other religion adherents have values mostly below 5% with a large number of zeroes, which indicates these variables are unlikely to explain the change in Sanders’s vote share which are typically larger in magnitude (the mean magnitude change is 8.7%). In fact, the R^2 of a model built including these variables is only 0.009 greater than when they are excluded. Plots showing heterodasticity (e.g. Black, other race, Catholic, and population density) are transformed using the log function for the following anaylsis. A small percentage (&amp;lt;3.5%) of Black and Catholic values are zero and are assigned the value of 0.1 to permit computing the log.&lt;/p&gt;
+
+&lt;!--- [Maybe include here (maybe in a footnote!) the correlation plots for the variables that you use a log transform on, after the log transform.] ---&gt;
+
+&lt;h3 id=&quot;feature-selection&quot;&gt;Feature selection&lt;/h3&gt;
+
+&lt;p&gt;With OLS regression, feature selection is an iterative process. The aim is to select the smallest subset of variables that explains nearly as much of the variance in the dependent variable as when including all of the independent variables. Goodness of fit metrics like R^2 and Adjusted R^2 are often used as estimates of the variance explained by the model with their own advantages and disadvantages.&lt;/p&gt;
+
+&lt;p&gt;Another aim to feature selection when building a model for interpretation (instead of prediction) is to include features that have statistically significant model coefficients, which requires P-values that are smaller than a prescribed threshold (often 0.05).&lt;/p&gt;
+
+&lt;p&gt;To understand the maximum variance explained by our dataset, I started by building a model with all remaining independent variables. (I excluded percent_hispanic because it is strongly correlation with percent_white because strongly correlated independent variables break a fundament assumption of OLS.) By doing so I can get a rough idea of the most significant features based on coefficient size (and can compare them to the features with the strongest correlations in the correlation plots above). I used the &lt;a href=&quot;https://www.statsmodels.org/stable/generated/statsmodels.regression.linear_model.OLS.html#statsmodels.regression.linear_model.OLS&quot;&gt;OLS command&lt;/a&gt; from the python package statsmodel for fitting which gave the following results:&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gu&quot;&gt;                              OLS Regression Results                              
+==================================================================================
+&lt;/span&gt;Dep. Variable:      delta_percent_sanders   R-squared:                       0.465
+Model:                                OLS   Adj. R-squared:                  0.442
+Method:                     Least Squares   F-statistic:                     21.08
+Date:                    Tue, 25 Aug 2020   Prob (F-statistic):           5.25e-28
+Time:                            10:31:07   Log-Likelihood:                -870.23
+No. Observations:                     254   AIC:                             1762.
+Df Residuals:                         243   BIC:                             1801.
+Df Model:                              10                                         
+&lt;span class=&quot;gu&quot;&gt;Covariance Type:                nonrobust                                         
+===============================================================================================
+&lt;/span&gt;&lt;span class=&quot;gh&quot;&gt;                                  coef    std err          t      P&amp;gt;|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------------
+&lt;/span&gt;const                          14.1786      5.792      2.448      0.015       2.769      25.588
+percent_white_nh               -0.2670      0.049     -5.480      0.000      -0.363      -0.171
+percent_w4yrdeg                -0.4486      0.164     -2.738      0.007      -0.771      -0.126
+per_capita_income            6.833e-05      0.000      0.436      0.663      -0.000       0.000
+percent_evangelical            -0.0754      0.065     -1.165      0.245      -0.203       0.052
+percent_unclaimed_religion      0.0066      0.058      0.115      0.909      -0.107       0.120
+margin_of_victory_D_avg         0.0066      0.031      0.215      0.830      -0.054       0.067
+log_percent_black               0.7573      0.442      1.715      0.088      -0.112       1.627
+log_population_density          0.9993      0.441      2.267      0.024       0.131       1.868
+log_percent_catholic           -0.2365      0.642     -0.368      0.713      -1.501       1.028
+&lt;span class=&quot;gu&quot;&gt;log_percent_other_race         -2.2300      0.800     -2.786      0.006      -3.807      -0.653
+==============================================================================
+&lt;/span&gt;Omnibus:                       35.883   Durbin-Watson:                   2.218
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              109.422
+Skew:                           0.571   Prob(JB):                     1.73e-24
+&lt;span class=&quot;gu&quot;&gt;Kurtosis:                       6.006   Cond. No.                     3.17e+05
+==============================================================================
+&lt;/span&gt;
+Warnings:
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; Standard Errors assume that the covariance matrix of the errors is correctly specified.
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; The condition number is large, 3.17e+05. This might indicate that there are
+strong multicollinearity or other numerical problems.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The goodness-of-fit statistic is decent (r^2=0.465) and can be interpreted as the model explaining about 50% of the variance in the data. Many variable coefficients are insignificant, so not every variable is relevant to the change in Sanders vote share. Next I looked at a goodness-of-fit statistic for over-fitting (the predicted r^2) and the VIF statistic for multicollinearity (or correlation between independent variables):&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Predicted R^2:  0.38
+
+   VIF Factor                     features
+0   36.121012             percent_white_nh
+1   21.870679              percent_w4yrdeg
+2   64.362556            per_capita_income
+3   11.349248          percent_evangelical
+4   10.458186   percent_unclaimed_religion
+5    9.849860      margin_of_victory_D_avg
+6    2.892990            log_percent_black
+7   10.647302        log_population_density
+8    6.394612         log_percent_catholic
+9   12.464885       log_percent_other_race
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;The predicted r^2 value of 0.38 indicates a slight over-fitting problem. &lt;input type=&quot;checkbox&quot; id=&quot;predicted_r^2&quot; /&gt;&lt;label for=&quot;predicted_r^2&quot;&gt;&lt;sup&gt;&lt;/sup&gt;&lt;/label&gt;&lt;span&gt;&lt;br /&gt;&lt;br /&gt;The smaller the predicted r^2 as compared to the regular r^2, the greater the problem of over-fitting.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt; All but one variable has a VIF value over 5 which indicate significant multicollinearity. This is a problem that I explore.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-problem-of-multicollinearity&quot;&gt;The problem of multicollinearity&lt;/h3&gt;
+
+&lt;p&gt;The multicollinearity is a big problem for us with our goal of interpreting the coefficients of our model. Let’s visualize this multicollinearity another way to understand it better. Figure 2 is a correlation heat map of the variables in this model (plus Hispanic percentage) made with the &lt;a href=&quot;https://seaborn.pydata.org/generated/seaborn.heatmap.html&quot;&gt;seaborn.heatmap command&lt;/a&gt;:&lt;/p&gt;
+&lt;figure class=&quot;align-center&quot;&gt;
+  &lt;img src=&quot;http://localhost:4000/assets/images/posts/sanders-tx-2020/Figure-heatmap.png&quot; alt=&quot;Heatmap&quot; /&gt;
+  &lt;figcaption&gt;Figure 2: Heatmap showing the correlation between all relevant demographic features and the dependent variable.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Our multicollinearity problem is almost completely illustrated in the top two rows of the heat map. The top row shows that the percentage of non-Hispanic Whites is at least moderately correlated with six other demographic features and the dependent variable (the change in Sanders vote share). Because the percentage of non-Hispanic Whites strongly anti-correlates with the percentage of Hispanics, the percentage of Hispanics also correlates with the six same demographic features. This means that the independent variables will change in unison and are not independent, which makes it difficult for the model to measure the effect on the dependent variable from each of the independent variables, holding the others constant. This results in less precise coefficient estimates and weaker statical power of the model.&lt;/p&gt;
+
+&lt;p&gt;It’s worth noting that only the correlation between variables of the same type (e.g., race, religion) could be attributed to the use of precentages instead of raw counts. The correlations between variables of difference types would still be present if we regressed on counts instead.&lt;/p&gt;
+
+&lt;p&gt;So what is happening here? Basically, most Texas counties are bifurcated along most demographics. For example, along race and ethnicity we see that most counties are comprised of mostly White and Hispanic people such that in counties with a large percentage of Whites, there is a low percentage of Hispanics, and in counties with a large percentage of Hispanics, there is a low percentage of Whites. This can be seen in Figure 3 which also includes the percentage of Black people and people who identify as another race:&lt;/p&gt;
+&lt;figure class=&quot;align-center&quot;&gt;
+  &lt;img src=&quot;http://localhost:4000/assets/images/posts/sanders-tx-2020/Figure-race-percent.png&quot; alt=&quot;Race Percent&quot; /&gt;
+  &lt;figcaption&gt;Figure 3: The racial makeup of Texas counties. Almost all counties are majority non-Hispanic White or Hispanic White.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;With religion, not only are evangelicals and catholics often the largest or second largest religious groups in a typical Texas counties, but in Texas evangelical are predominately White and Catholics are predominately Hispanic. Regarding partisan lean in Texas counties, Hispanics overwhelming support Democratic candidates in presidential elections while Whites overwhelming vote republican. Weaker—but still significant—bifurcation exists in Texas counties due to economic and educational measures due to inequality, which also correlate with race.&lt;/p&gt;
+
+&lt;p&gt;This bifurcation of Texas creates a dearth of counties in parts of the demographic parameter space preventing the regression model to control for individual variables with precision. Instead the model essentially works with a sparse and redundant data set, weakening the statistical power of the model and weakening the significance of coefficients. With weakened significance of coefficients, we lose our ability to determine which variables are meaningful and to measure their effect on the change in Sander’s vote share.&lt;/p&gt;
+
+&lt;p&gt;There are a few ways to deal with multicollinearity. We could remove highly correlated variables (like we have already done with percentage_hispanic), we can combine dependent variables (although I don’t think this makes sense given our variables), or we can perform an analysis designed for highly correlated variables like Lasso regression or MANOVA (which would deserve its own blog post). &lt;input type=&quot;checkbox&quot; id=&quot;raw&quot; /&gt;&lt;label for=&quot;raw&quot;&gt;&lt;sup&gt;&lt;/sup&gt;&lt;/label&gt;&lt;span&gt;&lt;br /&gt;&lt;br /&gt;Ideas from the Statistics by Jim article &lt;a href=&quot;https://statisticsbyjim.com/regression/multicollinearity-in-regression-analysis/&quot;&gt;Multicollinearity in Regression Analysis: Problems, Detection, and Solutions&lt;/a&gt;.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt; For the sake of presenting a final model and interpretation, I explore the first option.&lt;/p&gt;
+
+&lt;h3 id=&quot;a-simple-interpretable-model&quot;&gt;A simple interpretable model&lt;/h3&gt;
+
+&lt;p&gt;Requiring the final model to include only statistically significant variables with VIFs below five, produced only a handful of simple models with at most three variables. Of these models, the one with the largest R^2 values included only race-related variables: the percentage of the population that is non-Hispanic White, Black, and “other race”, respectively. The regression results for this model were as follows:&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gu&quot;&gt;                              OLS Regression Results                              
+==================================================================================
+&lt;/span&gt;Dep. Variable:      delta_percent_sanders   R-squared:                       0.419
+Model:                                OLS   Adj. R-squared:                  0.412
+Method:                     Least Squares   F-statistic:                     60.04
+Date:                    Tue, 25 Aug 2020   Prob (F-statistic):           2.88e-29
+Time:                            11:06:30   Log-Likelihood:                -880.64
+No. Observations:                     254   AIC:                             1769.
+Df Residuals:                         250   BIC:                             1783.
+Df Model:                               3                                         
+&lt;span class=&quot;gu&quot;&gt;Covariance Type:                nonrobust                                         
+===========================================================================================
+&lt;/span&gt;&lt;span class=&quot;gh&quot;&gt;                              coef    std err          t      P&amp;gt;|t|      [0.025      0.975]
+-------------------------------------------------------------------------------------------
+&lt;/span&gt;const                      14.1797      2.402      5.904      0.000       9.449      18.910
+percent_white_nh           -0.3323      0.025    -13.254      0.000      -0.382      -0.283
+log_percent_black           1.5020      0.339      4.426      0.000       0.834       2.170
+&lt;span class=&quot;gu&quot;&gt;log_percent_other_race     -2.8785      0.756     -3.808      0.000      -4.367      -1.390
+==============================================================================
+&lt;/span&gt;Omnibus:                       14.125   Durbin-Watson:                   2.295
+Prob(Omnibus):                  0.001   Jarque-Bera (JB):               36.206
+Skew:                           0.066   Prob(JB):                     1.37e-08
+&lt;span class=&quot;gu&quot;&gt;Kurtosis:                       4.845   Cond. No.                         304.
+==============================================================================
+&lt;/span&gt;
+Warnings:
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+Predicted R^2:  0.39
+
+   VIF Factor                 features
+0    3.637555         percent_white_nh
+1    1.613324        log_percent_black
+2    3.742407   log_percent_other_race
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;As expected, using fewer variables decreases the R^2. This model accounts for about 42% of the variance in the change in Sanders’s vote share. The over-fitting is minimal as the predicted R^2 (0.39) is not much less than the R^2 (0.42). Because this model only includes race-related demographics the interpretation is very simplistic.&lt;/p&gt;
+
+&lt;p&gt;The constant coefficient is ~14, which means an increase in Sanders’s vote share of 14% between 2016 and 2020 is expected when a Texas county has zeros in the other race variables, or conversely, a Hispanic percentage of 100%. The percent_white_nh coefficient of -0.33 means that for every percentage the White percentage increases, the change in Sanders’s voter share decreases by 0.33 percentage points. The log of the Black percentage and Other race percentage have coefficients of 1.5 and -2.9, respectively. For these log transformed variables, the change in Sanders’s vote share will increase (decrease) by 1.5 (2.9) percentage points every time the Black percentage (Other race percentage) increases by a factor of ~2.72 &lt;input type=&quot;checkbox&quot; id=&quot;the value of _e_&quot; /&gt;&lt;label for=&quot;the value of _e_&quot;&gt;&lt;sup&gt;&lt;/sup&gt;&lt;/label&gt;&lt;span&gt;&lt;br /&gt;&lt;br /&gt;the value of &lt;em&gt;e&lt;/em&gt;&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;, which is a rather insensitive relationships. The confidence intervals on all of the coefficients are fairly large, but they do not effect the general interpretation.&lt;/p&gt;
+
+&lt;p&gt;Simply put, the more non-Hispanic White a county is, the greater the loss of vote share for Sanders in 2020. Because the percentage of non-Hispanic Whites and Hispanics in the population are so strongly anti-correlated in Texas counties, Sanders vote share increased when this trend is extended to predominately Hispanic counties. This can be seen directly in the frist two panels of the correlation plots in Figure 1.&lt;/p&gt;
+
+&lt;h3 id=&quot;limitations&quot;&gt;Limitations&lt;/h3&gt;
+&lt;p&gt;One limitation of this study is that while the demographic data is descriptive of the entire population in each county, the dependent variable is derived from Democratic primary voters, a very non-representative sample of the overall population. Another limitation is the large range in the number votes cast in each county suggests that not every county should be given the same weight and a weighted regression may be more appropriate. Finally, it appears that demographics that are useful for reproducing national election results at the state-level (i.e., the demographics we adopted from FiveThirtyEight’s election forecasts) are not useful for building interpetable models at the county level in Texas.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
+&lt;p&gt;In this post I used multiple regression analysis on county-level demographical data to understand what types of voters drove the change in Bernie Sanders’s primary vote share between 2016 and 2020 in Texas.&lt;/p&gt;
+
+&lt;p&gt;I found that the demographics of Texas at the county level are too correlated to permit building a model with more than three statistically significant demographic variables and thus prohibits a detailed understanding of how individual demographics relate to the change in Sanders’s vote share.&lt;/p&gt;
+
+&lt;p&gt;More specifically, Texas counties are predominately White, non-Hispanic or predominately Hispanic and both of these groups appear to be homogenous across the state in terms of the other demographic and socioeconomic variables considered.&lt;/p&gt;
+
+&lt;p&gt;One of the few statistically significant models permitted by the dataset shows that Sanders’s Texas coalition shrunk by 0.33 percentage points for every percentage point increase in the White population. In other words, the more non-Hispanic White a county is, the greater the loss of vote share for Sanders in 2020, which is consistent exit polling.&lt;/p&gt;</content><author><name>Matt Stevans</name><email>stevans@utexas.edu</email></author><summary type="html">In this post I present a multiple regression analysis on county-level demographics from the US Census with the aim of understanding what types of voters drove the change in Bernie Sanders’s primary vote share between 2016 and 2020 in Texas.</summary></entry><entry><title type="html">Adding inline footnotes with automatic numbering in HTML and CSS</title><link href="http://localhost:4000/inline-footnotes/" rel="alternate" type="text/html" title="Adding inline footnotes with automatic numbering in HTML and CSS" /><published>2020-09-01T00:00:00-05:00</published><updated>2020-09-01T00:00:00-05:00</updated><id>http://localhost:4000/inline-footnotes</id><content type="html" xml:base="http://localhost:4000/inline-footnotes/">&lt;p class=&quot;notice--success&quot;&gt;&lt;strong&gt;Updated!&lt;/strong&gt; Now includes automatic numbering.&lt;/p&gt;
+
+&lt;p class=&quot;notice&quot;&gt;To jump to the section with the code, &lt;strong&gt;click &lt;a href=&quot;#the-code&quot;&gt;here&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;!--- Minimal-mistakes has traditional footnotes. See here for example: https://mmistakes.github.io/minimal-mistakes/docs/layouts/#fnref:sidebar-menu
 
 The inline code looks like this:
 
 To create a sidebar menu[^sidebar-menu] similar to the one found in the theme's documentation pages you'll need to modify a `_data` file and some YAML Front Matter.
 
 [^sidebar-menu]: Sidebar menu supports 1 level of nested links.---&gt;
-&lt;p class=&quot;notice--success&quot;&gt;&lt;strong&gt;Updated!&lt;/strong&gt; Now includes automatic numbering.&lt;/p&gt;
-
-&lt;p class=&quot;notice&quot;&gt;To jump to the section with the code, &lt;strong&gt;click &lt;a href=&quot;#the-code&quot;&gt;here&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;I really enjoy reading the blog &lt;a href=&quot;https://fivethirtyeight.com/&quot;&gt;FiveThirtyEight&lt;/a&gt; for the data-driven reporting on politics, sports, and life. It is also the first place I recall encountering inline footnotes some time back in 2017. I remember being way too impressed when I clicked on a footnote, the remaining article text lowered creating a blank space, and the footnote appeared out of thin air. Now that I have my own blog, I want to give my reads the same pleasurable experience. Since I don’t know JavaScript, which FiveThirtyEight uses for their inline footnotes, my goal is to use HTML and CSS. In this post, I share what I’ve found for those who want to do something similar.&lt;/p&gt;
 
@@ -93,223 +313,7 @@ input&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;
 
 &lt;p class=&quot;notice&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; If you’re using the Jekyll theme called Minimal Mistakes like I am, you can learn how to update the style sheet &lt;a href=&quot;https://mmistakes.github.io/minimal-mistakes/docs/stylesheets/&quot;&gt;here&lt;/a&gt; in the official Docs.&lt;/p&gt;
 
-&lt;p&gt;My next footnote-related adventure is to figure out how to get the footnote numbering sequence to update programmatically… &lt;strong&gt;Update: I’ve implemented automatic numbering after discovering &lt;a href=&quot;https://www.w3schools.com/css/css_counters.asp&quot;&gt;CSS counters&lt;/a&gt;.&lt;/strong&gt; Here is a second footnote number as a demostration of the autmoatic numbering. &lt;input type=&quot;checkbox&quot; id=&quot;cb2&quot; /&gt;&lt;label for=&quot;cb2&quot;&gt;&lt;sup&gt;&lt;/sup&gt;&lt;/label&gt;&lt;span&gt;&lt;br /&gt;&lt;br /&gt;Footnotes are cool.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;</content><author><name>Matt Stevans</name><email>stevans@utexas.edu</email></author><summary type="html"></summary></entry><entry><title type="html">Using regression analysis to learn how Bernie Sanders’s Texan voter collation changed between 2016 and 2020</title><link href="http://localhost:4000/sanders-tx-2020/" rel="alternate" type="text/html" title="Using regression analysis to learn how Bernie Sanders’s Texan voter collation changed between 2016 and 2020" /><published>2020-08-31T00:00:00-05:00</published><updated>2020-08-31T00:00:00-05:00</updated><id>http://localhost:4000/sanders-tx-2020</id><content type="html" xml:base="http://localhost:4000/sanders-tx-2020/">&lt;p&gt;In this post I attempt to use multiple regression analysis on county-level demographics from the US Census to understand what types of voters drove the change in Bernie Sanders’s primary vote share between 2016 and 2020 in Texas.&lt;/p&gt;
-
-&lt;p&gt;I find that the demographics of Texas at the county level are too correlated to permit a detailed and quantified understanding of how individual demographics relate to the change in Sanders’s vote share using multiple regression.&lt;/p&gt;
-
-&lt;p&gt;Simple models show that Sanders’s Texas coalition lost non-Hispanic White voters and gained Hispanic voters between 2016 and 2020, which is consistent with trends in national opinion polling and exit polling.&lt;/p&gt;
-
-&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;This project idea came to me one day while I was reading a FiveThirtyEight article assessing whether the 2020 Democratic primaries were having record-breaking turnout footnote: (they weren’t).&lt;/p&gt;
-
-&lt;p&gt;In that article they mentioned performing a regression analysis on demographic data to understand the type of voter driving increases in voter turnout in the primaries (footnote: in the 15 states that had voted) so far.&lt;/p&gt;
-
-&lt;p&gt;This got me thinking that the data must exist for me to do a similar regression analysis for my blog. This seemed like a great opportunity to further my understanding of regression modeling which I had encountered at a basic level many times in astronomy classrooms and to apply my skills in another domain that interests me—politics.&lt;/p&gt;
-
-&lt;h2 id=&quot;sanderss-election-stats&quot;&gt;Sanders’s election stats&lt;/h2&gt;
-
-&lt;p&gt;Bernies Sanders was a surprising success in the 2016 Democratic primaries finishing second with 13,210,550 million votes and winning 23 states’ primary elections. Footnote: Stats from the Wikipedia article: &lt;a href=&quot;https://en.wikipedia.org/wiki/Results_of_the_2016_Democratic_Party_presidential_primaries&quot;&gt;Results of the 2016 Democratic Party presidential primaries&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;In the 2020 primary, he had a marked drop in vote share in national polling due, in part, to the crowded field of candidates. In Texas, Sanders went from earning 33.19% of all votes in 2016 to 29.91% in 2020. Foot note(although his raw votes went up from 476,547 to 626,339).&lt;/p&gt;
-
-&lt;p&gt;Exit polling by CNN shows Sander’s vote share of individual demographics dropped in all categories except vote share of Hispanics. 
-Footnote: CNN exiting polls of Texas in &lt;a href=&quot;https://www.cnn.com/election/2016/primaries/polls/tx/Dem&quot;&gt;2016&lt;/a&gt; and &lt;a href=&quot;https://www.cnn.com/election/2020/primaries-caucuses/entrance-and-exit-polls/texas/democratic&quot;&gt;2020&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;using-regression-with-demographics&quot;&gt;Using regression with demographics&lt;/h2&gt;
-
-&lt;p&gt;Regression analysis is a powerful tool for understanding the relation between properties of a population. Regressing on demographics has been used to understand their relationship to election outcomes in a variety of ways including &lt;a href=&quot;https://fivethirtyeight.com/features/how-fivethirtyeight-2020-primary-model-works/&quot;&gt;election forecasting&lt;/a&gt;, &lt;a href=&quot;https://projecteuclid.org/download/pdf_1/euclid.ss/1049993203&quot;&gt;identifying irregularities in voting&lt;/a&gt; in the pivotal state of FL in the 2000 presidential election, and &lt;a href=&quot;https://fivethirtyeight.com/features/historic-turnout-in-2020-not-so-far/&quot;&gt;understanding what type of voter drove increases&lt;/a&gt; in voter turnout in the 2020 Democratic primaries.&lt;/p&gt;
-
-&lt;p&gt;I debated with myself for a long time on the correct type of regression model to use for this analysis. On the one hand, I’m most familiar with ordinary least squares (OLS) linear regression, it’s the most popular so there’s tons of resources online, and it is the easiest to interpret. At the same time, most of the data is fundamentally counting data, which suggests a negative binomial or Poisson regression analysis, but I know less about these types of regression. To use OLS with our counting data, I would have to transform counts to fraction or percentage of total, which introduces some level of correlation between variables. Ultimately, I settled on using OLS because I found my analysis met the &lt;a href=&quot;https://statisticsbyjim.com/regression/multicollinearity-in-regression-analysis/&quot;&gt;seven classical OLS assumptions&lt;/a&gt; (at least approximately). Put simply, as long as observations of the error term in the linear model are uncorrelated with each other and the independent variables and they have constant variance (which can be confirmed using residual plots, for example) then OLS can be used.&lt;/p&gt;
-
-&lt;p&gt;One of the perks of OLS is that it is easy to interpret. It allows you to understand quantitatively how the independent variables (in our case: demographic variables) each relate to the dependent variable (e.g., the decrease in Sanders’s total vote share). The relationship comes straight from the model coefficients: one unit of change in independent variable “A” leads to a change in the dependent variable equal to the value of the coefficient of the model term for variable “A” with all other variables being held constant.&lt;/p&gt;
-
-&lt;h2 id=&quot;the-data&quot;&gt;The data&lt;/h2&gt;
-
-&lt;p&gt;To build a precise and interpretable model, independent variables must be chosen based on a strong theoretical understanding of the system under investigation. In place of a full literature review on how demographics relate to election outcomes, we adopted the demographic variables used by the election experts at FiveThirtyEight for their election forecast models. The demographic variables they use are related to race, education, income, urban/rural measure (population density), religion, and liberal-conservative lean. Here is the list of variables we were able to collect that most closely match those used by FiveThirtyEight:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;White non-Hispanic&lt;/li&gt;
-  &lt;li&gt;White Hispanic&lt;/li&gt;
-  &lt;li&gt;Black&lt;/li&gt;
-  &lt;li&gt;Other race&lt;/li&gt;
-  &lt;li&gt;Fraction with a 4-yr degree&lt;/li&gt;
-  &lt;li&gt;Mean per capita income&lt;/li&gt;
-  &lt;li&gt;Population density&lt;/li&gt;
-  &lt;li&gt;Black Protestant&lt;/li&gt;
-  &lt;li&gt;Catholic&lt;/li&gt;
-  &lt;li&gt;Evangelical&lt;/li&gt;
-  &lt;li&gt;Jewish&lt;/li&gt;
-  &lt;li&gt;Mainline&lt;/li&gt;
-  &lt;li&gt;Mormon&lt;/li&gt;
-  &lt;li&gt;Other religion&lt;/li&gt;
-  &lt;li&gt;Unclaimed religion&lt;/li&gt;
-  &lt;li&gt;Margin of victory of Democratic candidates in 2008-2016 presidential elections (proxy for county partisan lean)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;The race, education, income, and population density variables are pulled from the U.S. Census Bureau. I use US Census data from the American Community Survey (ACS) 5-year estimates accessed via the helpful and well-documented python package called &lt;a href=&quot;https://github.com/jtleider/censusdata&quot;&gt;censusdata&lt;/a&gt;. The past Presidential election results are from &lt;a href=&quot;https://github.com/Data4Democracy&quot;&gt;Data for Democracy’s&lt;/a&gt; &lt;a href=&quot;https://data.world/data4democracy/election-transparency&quot;&gt;data.world election transparency page&lt;/a&gt;. The 2016 and 2020 primary election results are from the &lt;a href=&quot;https://www.sos.state.tx.us/elections/historical/elections-results-archive.shtml&quot;&gt;Texas Secretary of State website&lt;/a&gt;. The religious adherence data come from the Association of Religious Data Archives, &lt;a href=&quot;http://www.thearda.com/Archive/Files/Descriptions/RCMSCY10.asp&quot;&gt;U.S. Religion Census, 2010&lt;/a&gt;. The Census and elections data are of high quality and have no missing data. The religious data is from 2010 (the latest available) and was collected via self reporting by congregations. (Foot note: Self reporting by congregations leads to some counties having more religious adherents than the total population. Adherents outside of the 236 groups included in the study are combined with non-religious people in the “Unclaimed religion” category.) We use data at the county level because counties are the smallest unit of comprehensive coverage shared by all of our data sources and the level at which the state of Texas collects and reports election results.&lt;/p&gt;
-
-&lt;p&gt;A comment on training/test split:
-Typically when building a model you want to leave out a test sample to test for over fitting. We are going to pass on leaving out a test set because we want to train on as much of our small sample (254 counties) as possible and we will not be using our model to make predictions. We assess the over-fitting of our model with the predicted R^2 quantity which is similar to leave one out cross validation.&lt;/p&gt;
-
-&lt;h2 id=&quot;exploratory-plots-and-observations&quot;&gt;Exploratory plots and observations&lt;/h2&gt;
-
-&lt;p&gt;Figure 1 plots the difference in Bernie vote share percentage in 2016 and 2020 against a number of covariates. This plot provides us with some insights that we can use later for interpreting the results of the models.&lt;/p&gt;
-&lt;figure class=&quot;align-center&quot;&gt;
-  &lt;img src=&quot;http://localhost:4000/assets/images/posts/sanders-tx-2020/Figure-scatter.png&quot; alt=&quot;&quot; /&gt;
-  &lt;figcaption&gt;Figure 1: Scatter plots.&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;p&gt;The plots show that the change in Sanders’s vote share is moderately anti-correlated with the fraction of White people; moderately correlated with the fraction of Hispanic people; weakly correlated with the fraction of Black people; and not obviously dependent on the fraction of people of other races; decreasing with the fraction of the population of a 4-year degree; decreasing with mean personal income; decreasing with the fraction of Evangelical adherents; increasing with the fraction of Catholic adherents; not obviously dependent on the fraction of Moron adherents, Black Protestant adherents, unclaimed adherents, and adherents of other religions; moderately correlated with the average margin of victory for the Democratic nominee in the past three presidential elections; and not obviously dependent on population density.&lt;/p&gt;
-
-&lt;p&gt;Out of curiosity, in the last two open figures we plot the change in Sanders vote share versus Sanders vote share in 2016 and a list of (gaussian) random numbers and see a strong anti-correlated in the former and (as expected) no apparent correlation in the latter.&lt;/p&gt;
-
-&lt;p&gt;The fraction of Mormon, Black Protestant and other religion adherents have low values and a large number of zero values, which indicate these variables are unlikely to explain the change in Sanders’s vote share which are typically larger in magnitude (the mean magnitude change is 8.7%). In fact, the R^2 of a model built including these variables is only 0.009 greater than when they are excluded. Plots showing heterodasticity (e.g. Black, other race, Catholic, and population density) are transformed using the log function for the following anaylsis. A small percentage (&amp;lt;3.5%) of Black and Catholic values have a value of zero and are assigned the value of 0.1 to permit computing the log.&lt;/p&gt;
-
-&lt;p&gt;[Maybe include here (maybe in a footnote!) the correlation plots for the variables that you use a log transform on, after the log transform.]&lt;/p&gt;
-
-&lt;h2 id=&quot;feature-selection&quot;&gt;Feature selection&lt;/h2&gt;
-
-&lt;p&gt;With OLS regression, feature selection is an iterative process. The aim is to select the smallest subset of variables that both explains almost as much of the variance in the dependent variable as when including all of the independent variables. Goodness of fit metrics like R^2 and Adjusted R^2 are often used as estimates of the variance explained by the model.&lt;/p&gt;
-
-&lt;p&gt;Another aim to feature selection when you are building a model for interpretation (instead of prediction) is to include features that have  statistically significant model coefficients, which requires P-values that are smaller than a prescribed threshold (often 0.05).&lt;/p&gt;
-
-&lt;p&gt;To understand the maximum variance explained by our dataset, we start by building a model with all remaining independent variables. (We exclude fraction_hispanic because it is strongly correlation with fraction_white as we will see shortly and strongly correlated independent variables break a fundament assumption of OLS.) We will also get a rough idea of the most significant features based on coefficient size (and compare them to the features with the strongest correlations in the correlation plots above). We use the &lt;a href=&quot;https://www.statsmodels.org/stable/generated/statsmodels.regression.linear_model.OLS.html#statsmodels.regression.linear_model.OLS&quot;&gt;OLS command&lt;/a&gt; from the python package statsmodel for fitting which gives the following results:&lt;/p&gt;
-
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gu&quot;&gt;                              OLS Regression Results                              
-==================================================================================
-&lt;/span&gt;Dep. Variable:     delta_fraction_sanders   R-squared:                       0.465
-Model:                                OLS   Adj. R-squared:                  0.442
-Method:                     Least Squares   F-statistic:                     21.08
-Date:                    Tue, 25 Aug 2020   Prob (F-statistic):           5.25e-28
-Time:                            10:31:07   Log-Likelihood:                -870.23
-No. Observations:                     254   AIC:                             1762.
-Df Residuals:                         243   BIC:                             1801.
-Df Model:                              10                                         
-&lt;span class=&quot;gu&quot;&gt;Covariance Type:                nonrobust                                         
-===============================================================================================
-&lt;/span&gt;&lt;span class=&quot;gh&quot;&gt;                                  coef    std err          t      P&amp;gt;|t|      [0.025      0.975]
------------------------------------------------------------------------------------------------
-&lt;/span&gt;const                          14.1786      5.792      2.448      0.015       2.769      25.588
-fraction_white_nh              -0.2670      0.049     -5.480      0.000      -0.363      -0.171
-fraction_w4yrdeg               -0.4486      0.164     -2.738      0.007      -0.771      -0.126
-per_capita_income            6.833e-05      0.000      0.436      0.663      -0.000       0.000
-fraction_evangelical           -0.0754      0.065     -1.165      0.245      -0.203       0.052
-fraction_unclaimed_religion     0.0066      0.058      0.115      0.909      -0.107       0.120
-margin_of_victory_D_avg         0.0066      0.031      0.215      0.830      -0.054       0.067
-log_fraction_black              0.7573      0.442      1.715      0.088      -0.112       1.627
-log_population_density          0.9993      0.441      2.267      0.024       0.131       1.868
-log_fraction_catholic          -0.2365      0.642     -0.368      0.713      -1.501       1.028
-&lt;span class=&quot;gu&quot;&gt;log_fraction_other_race        -2.2300      0.800     -2.786      0.006      -3.807      -0.653
-==============================================================================
-&lt;/span&gt;Omnibus:                       35.883   Durbin-Watson:                   2.218
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):              109.422
-Skew:                           0.571   Prob(JB):                     1.73e-24
-&lt;span class=&quot;gu&quot;&gt;Kurtosis:                       6.006   Cond. No.                     3.17e+05
-==============================================================================
-&lt;/span&gt;
-Warnings:
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; Standard Errors assume that the covariance matrix of the errors is correctly specified.
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; The condition number is large, 3.17e+05. This might indicate that there are
-strong multicollinearity or other numerical problems.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;We see a decent goodness-of-fit statistic, r^2=0.465 which can be interpreted as our model explaining about 50% of the variance in the data. We see many variable coefficients are insignificant, so not every variable is relevant to the change in Sanders vote share. Let’s look at a goodness-of-fit statistic for over-fitting (the predicted r^2) and the VIF statistic for multicollinearity (or correlation between independent variables):&lt;/p&gt;
-
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Predicted R^2 0.38
-   VIF Factor                     features
-0   36.121012            fraction_white_nh
-1   21.870679             fraction_w4yrdeg
-2   64.362556            per_capita_income
-3   11.349248         fraction_evangelical
-4   10.458186  fraction_unclaimed_religion
-5    9.849860      margin_of_victory_D_avg
-6    2.892990           log_fraction_black
-7   10.647302       log_population_density
-8    6.394612        log_fraction_catholic
-9   12.464885      log_fraction_other_race
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;The predicted r^2 = 0.38, indicating a slight over-fitting problem footnote(the smaller the predicted r^2 as compared to the regular r^2, the greater the problem of over-fitting).  All but one variable has a VIF value over 5 which indicate significant multicollinearity. This is a problem that we must explore.&lt;/p&gt;
-
-&lt;h3 id=&quot;the-problem-of-multicollinearity&quot;&gt;The problem of multicollinearity&lt;/h3&gt;
-
-&lt;p&gt;The multicollinearity is a big problem for us with our goal of interpreting the coefficients of our model. Let’s visualize this multicollinearity another way to understand it better. Figure 2 is a correlation heat map of the variables in this model (plus Hispanic fraction) made with the &lt;a href=&quot;https://seaborn.pydata.org/generated/seaborn.heatmap.html&quot;&gt;Seaborn.heatmap command&lt;/a&gt;:&lt;/p&gt;
-&lt;figure class=&quot;align-center&quot;&gt;
-  &lt;img src=&quot;http://localhost:4000/assets/images/posts/sanders-tx-2020/Figure-heatmap.png&quot; alt=&quot;&quot; /&gt;
-  &lt;figcaption&gt;Figure 2: Heatmap.&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;Our multicollinearity problem is almost completely encapsulated in the top two rows of the heat map. The top row shows that the fraction of non-Hispanic Whites is at least moderately correlated with six other demographic features and the dependent variable (the change in Sanders vote share). Because the fraction of non-Hispanic Whites strongly anti-correlates with the fraction of Hispanics, the fraction of Hispanics also correlates with those six other demographic features. This means that the independent variables will change in unison and are not independent, which makes it difficult for the model to measure the effect on the dependent variable by each of the independent variables holding the others constant. This results in less precise coefficient estimates and weaker statical power of our model.&lt;/p&gt;
-
-&lt;p&gt;So what is happening here? Basically, most Texas counties are bifurcated along most demographics. For example, along race and ethnicity we see that most counties are comprised of mostly White and Hispanic people such that in counties with a large fraction of Whites there is a low fraction of Hispanics, and in counties with a large fraction of Hispanics there is a low fraction of Whites. This can be seen in Figure 3 which also includes the fraction of Black people and people who identify as another race:&lt;/p&gt;
-&lt;figure class=&quot;align-center&quot;&gt;
-  &lt;img src=&quot;http://localhost:4000/assets/images/posts/sanders-tx-2020/Figure-race-percent.png&quot; alt=&quot;&quot; /&gt;
-  &lt;figcaption&gt;Figure 3: Percent.&lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;With religion, not only are evangelicals and catholics often the largest or second largest religious groups in a typical Texas counties, but in Texas evangelical are predominately White and Catholics are predominately Hispanic. Regarding partisan lean in Texas counties, Hispanics overwhelming support Democratic candidates in presidential elections while Whites overwhelming vote republican. Weaker—but still significant—bifurcation exists in Texas counties due to economic and educational measures due to inequality, which also correlate with race.&lt;/p&gt;
-
-&lt;p&gt;This bifurcation of Texas creates a dearth of counties in parts of the demographic parameter space that would allow the regression model to control for individual variables with precision. Instead the model essentially works with a sparse and redundant data set, weakening the statistical power of the model and weakening the significance of coefficients. With weakened significance of coefficients, we lose our ability to determine which variables are meaningful and to measure their effect on the change in Sander’s vote share.&lt;/p&gt;
-
-&lt;p&gt;There are a few ways to deal with multicollinearity. We could remove highly correlated variables (like we have already done with fraction_hispanic), we can combine dependent variables (although I don’t think this makes sense given our variables), or perform an analysis designed for highly correlated variables like Lasso regression or MANOVA (which would deserve their own blog post). (Cite stats by Jim here in footnote). For the sake of presenting a final model and interpretation, we explore the first option.&lt;/p&gt;
-
-&lt;h2 id=&quot;a-simple-interpretable-model&quot;&gt;A simple interpretable model&lt;/h2&gt;
-
-&lt;p&gt;When we require our final model to include only statistically significant variables and that those variables have VIFs below five, we are left to choose from a handful of simple models with at most three variables. Of these models, the one with the largest R^2 values includes only race-related variables: the percentage of the population that is non-Hispanic White, Black, and “other race”, respectively. The regression results for this model are as follows:&lt;/p&gt;
-
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gu&quot;&gt;                              OLS Regression Results                              
-==================================================================================
-&lt;/span&gt;Dep. Variable:     delta_fraction_sanders   R-squared:                       0.419
-Model:                                OLS   Adj. R-squared:                  0.412
-Method:                     Least Squares   F-statistic:                     60.04
-Date:                    Tue, 25 Aug 2020   Prob (F-statistic):           2.88e-29
-Time:                            11:06:30   Log-Likelihood:                -880.64
-No. Observations:                     254   AIC:                             1769.
-Df Residuals:                         250   BIC:                             1783.
-Df Model:                               3                                         
-&lt;span class=&quot;gu&quot;&gt;Covariance Type:                nonrobust                                         
-===========================================================================================
-&lt;/span&gt;&lt;span class=&quot;gh&quot;&gt;                              coef    std err          t      P&amp;gt;|t|      [0.025      0.975]
--------------------------------------------------------------------------------------------
-&lt;/span&gt;const                      14.1797      2.402      5.904      0.000       9.449      18.910
-fraction_white_nh          -0.3323      0.025    -13.254      0.000      -0.382      -0.283
-log_fraction_black          1.5020      0.339      4.426      0.000       0.834       2.170
-&lt;span class=&quot;gu&quot;&gt;log_fraction_other_race    -2.8785      0.756     -3.808      0.000      -4.367      -1.390
-==============================================================================
-&lt;/span&gt;Omnibus:                       14.125   Durbin-Watson:                   2.295
-Prob(Omnibus):                  0.001   Jarque-Bera (JB):               36.206
-Skew:                           0.066   Prob(JB):                     1.37e-08
-&lt;span class=&quot;gu&quot;&gt;Kurtosis:                       4.845   Cond. No.                         304.
-==============================================================================
-&lt;/span&gt;
-Warnings:
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; Standard Errors assume that the covariance matrix of the errors is correctly specified.
-
-Predicted R^2 0.39
-   VIF Factor                 features
-0    3.637555        fraction_white_nh
-1    1.613324       log_fraction_black
-2    3.742407  log_fraction_other_race
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;As expected, using fewer variables decreases the R^2. This model accounts for about 42% of the variance in the change in Sander’s vote share. The over-fitting is minimal as the predicted R^2 (0.39) is not much less than the R^2 (0.42). Because this model only includes race-related demographics the interpretation is very simplistic.&lt;/p&gt;
-
-&lt;p&gt;The constant coefficient is ~14, which mean you’d expect an increase in Sanders’s vote share of 14% between 2016 and 2020 when a Texas county has zeros in the model variables, or conversely, a Hispanic fraction of 100%. The fraction_white_nh coefficient of -0.33 means that for every percentage the White fraction increases, the change in Sanders’s voter share decreases by 0.33 percentage points. The log of the Black fraction and Other race fraction have coefficients of 1.5 and -2.9, respectively. For these log transformed variables, the change in Sanders’s vote share will increase by 1.5 percentage points (decrease by -2.9 percentage points) every time the Black fraction (Other race fraction) increases by a factor of ~2.72 (footnote: the value of &lt;em&gt;e&lt;/em&gt;), which is a rather insensitive relationships. The confidence interval on all of the coefficients are fairly large but they do not effect the general interpretation.&lt;/p&gt;
-
-&lt;p&gt;Simply put, the more non-Hispanic White a county is, the greater the loss of vote share for Sanders in 2020. Because the percentage of non-Hispanic Whites and Hispanics in the population are so strongly anti-correlated in Texas counties, when extending this trend to predominately Hispanic counties, Sanders vote share increased.&lt;/p&gt;
-
-&lt;h2 id=&quot;limitations&quot;&gt;Limitations&lt;/h2&gt;
-&lt;p&gt;One limitation of this study is that while the demographic data is descriptive of the entire population in each county, the dependent variable is derived from Democratic primary voters, a very non-representative sample of the overall population. Another potential limitation is the use of the fraction of vote share which as mentioned earlier introduces correlations between independent variables. Further work would be need to understand what role this played in the multicollinearity observed. Finally, the large range in the number votes cast in each county suggests that not every county should be given the same weight and a weighted regression may be more appropriate.&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h2&gt;
-&lt;p&gt;In this post I attempted to use multiple regression analysis on county-level demographical data to understand what types of voters drove the change in Bernie Sanders’s primary vote share between 2016 and 2020 in Texas.&lt;/p&gt;
-
-&lt;p&gt;I find that the demographics of Texas at the county level are too correlated to permit building a model with more than three statistically significant demographic variables and thus prohibits a detailed understanding of how individual demographics relate to the change in Sanders’s vote share.&lt;/p&gt;
-
-&lt;p&gt;More specifically, Texas counties are predominately White, non-Hispanic or predominately Hispanic and both of these groups appear to be homogenous across the state in terms of the other demographic and socioeconomic variables considered.&lt;/p&gt;
-
-&lt;p&gt;One of the few statistically significant models permitted by the dataset shows that Sanders’s Texas coalition shrunk by 0.33 percentage points for every percentage point increase in the White population. In other words, the more non-Hispanic White a county is, the greater the loss of vote share for Sanders in 2020—a conclusion that could be reached by studying the univariate correlation plots.&lt;/p&gt;
-
-&lt;p&gt;Because the percentage of non-Hispanic Whites and Hispanics in the population are so strongly anti-correlated in Texas counties, when extending this trend to predominately Hispanic counties, Sanders vote share increased. The matches the demographics trends observed in exit polling.&lt;/p&gt;</content><author><name>Matt Stevans</name><email>stevans@utexas.edu</email></author><summary type="html">In this post I attempt to use multiple regression analysis on county-level demographics from the US Census to understand what types of voters drove the change in Bernie Sanders’s primary vote share between 2016 and 2020 in Texas.</summary></entry><entry><title type="html">Using US Census APIs to investigate the drop in youth-voter turnout in 2020</title><link href="http://localhost:4000/youth-vote/" rel="alternate" type="text/html" title="Using US Census APIs to investigate the drop in youth-voter turnout in 2020" /><published>2020-04-01T00:00:00-05:00</published><updated>2020-04-01T00:00:00-05:00</updated><id>http://localhost:4000/youth-vote</id><content type="html" xml:base="http://localhost:4000/youth-vote/">&lt;p&gt;After Super Tuesday, young voters were frequently scapegoated by media outlets for Bernie Sanders’s loses in Super Tuesday contests like in this US Today &lt;a href=&quot;https://www.usatoday.com/story/news/politics/elections/2020/03/04/super-tuesday-bernie-sanders-youth-votes-fell-short-compared-2016/4947795002/&quot;&gt;article&lt;/a&gt; entitled, &lt;em&gt;Many young voters sat out Super Tuesday, contributing to Bernie Sanders’ losses&lt;/em&gt;. Their reasoning was that a lot of &lt;a href=&quot;https://nymag.com/intelligencer/2020/02/this-one-chart-explains-why-young-voters-back-bernie-sanders.html&quot;&gt;polling&lt;/a&gt; before Super Tuesday showed Sanders with a large support gap, being strongly favored by younger voters and strongly disfavored by older voters. So, for Bernie to have lost, young people must not have made it to the polls. At first glance, exit (and entrance) polling from CNN seems to support this notion. The percentage of voters aged 18 to 29 years old in states that voted on or before March 10th in both &lt;a href=&quot;https://www.cnn.com/election/2016/primaries/polls/&quot;&gt;2016&lt;/a&gt; and &lt;a href=&quot;https://www.cnn.com/election/2020/entrance-and-exit-polls/&quot;&gt;2020&lt;/a&gt; are displayed in the following table. We see that youth voters made up a smaller percentage of 2020 voters in 13 of the 15 states.&lt;/p&gt;
+&lt;p&gt;My next footnote-related adventure is to figure out how to get the footnote numbering sequence to update programmatically… &lt;strong&gt;Update: I’ve implemented automatic numbering after discovering &lt;a href=&quot;https://www.w3schools.com/css/css_counters.asp&quot;&gt;CSS counters&lt;/a&gt;.&lt;/strong&gt; Here is a second footnote number as a demostration of the autmoatic numbering. &lt;input type=&quot;checkbox&quot; id=&quot;cb2&quot; /&gt;&lt;label for=&quot;cb2&quot;&gt;&lt;sup&gt;&lt;/sup&gt;&lt;/label&gt;&lt;span&gt;&lt;br /&gt;&lt;br /&gt;Footnotes are cool.&lt;br /&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;</content><author><name>Matt Stevans</name><email>stevans@utexas.edu</email></author><summary type="html">Updated! Now includes automatic numbering.</summary></entry><entry><title type="html">Using US Census APIs to investigate the drop in youth-voter turnout in 2020</title><link href="http://localhost:4000/youth-vote/" rel="alternate" type="text/html" title="Using US Census APIs to investigate the drop in youth-voter turnout in 2020" /><published>2020-04-01T00:00:00-05:00</published><updated>2020-04-01T00:00:00-05:00</updated><id>http://localhost:4000/youth-vote</id><content type="html" xml:base="http://localhost:4000/youth-vote/">&lt;p&gt;After Super Tuesday, young voters were frequently scapegoated by media outlets for Bernie Sanders’s loses in Super Tuesday contests like in this US Today &lt;a href=&quot;https://www.usatoday.com/story/news/politics/elections/2020/03/04/super-tuesday-bernie-sanders-youth-votes-fell-short-compared-2016/4947795002/&quot;&gt;article&lt;/a&gt; entitled, &lt;em&gt;Many young voters sat out Super Tuesday, contributing to Bernie Sanders’ losses&lt;/em&gt;. Their reasoning was that a lot of &lt;a href=&quot;https://nymag.com/intelligencer/2020/02/this-one-chart-explains-why-young-voters-back-bernie-sanders.html&quot;&gt;polling&lt;/a&gt; before Super Tuesday showed Sanders with a large support gap, being strongly favored by younger voters and strongly disfavored by older voters. So, for Bernie to have lost, young people must not have made it to the polls. At first glance, exit (and entrance) polling from CNN seems to support this notion. The percentage of voters aged 18 to 29 years old in states that voted on or before March 10th in both &lt;a href=&quot;https://www.cnn.com/election/2016/primaries/polls/&quot;&gt;2016&lt;/a&gt; and &lt;a href=&quot;https://www.cnn.com/election/2020/entrance-and-exit-polls/&quot;&gt;2020&lt;/a&gt; are displayed in the following table. We see that youth voters made up a smaller percentage of 2020 voters in 13 of the 15 states.&lt;/p&gt;
 
 &lt;iframe title=&quot;Youth voter turnout in Democratic Primaries has dropped in terms of percentages&quot; aria-label=&quot;Table&quot; id=&quot;datawrapper-chart-xoMeU&quot; src=&quot;//datawrapper.dwcdn.net/xoMeU/2/&quot; scrolling=&quot;no&quot; frameborder=&quot;0&quot; style=&quot;background: #FFFFFF; width: 0; min-width: 100% !important; border: none;&quot; height=&quot;774&quot;&gt;&lt;/iframe&gt;
 &lt;script type=&quot;text/javascript&quot;&gt;!function(){&quot;use strict&quot;;window.addEventListener(&quot;message&quot;,function(a){if(void 0!==a.data[&quot;datawrapper-height&quot;])for(var e in a.data[&quot;datawrapper-height&quot;]){var t=document.getElementById(&quot;datawrapper-chart-&quot;+e)||document.querySelector(&quot;iframe[src*='&quot;+e+&quot;']&quot;);t&amp;&amp;(t.style.height=a.data[&quot;datawrapper-height&quot;][e]+&quot;px&quot;)}})}();

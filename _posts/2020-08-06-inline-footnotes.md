@@ -3,6 +3,12 @@ layout: single
 title:  "Adding inline footnotes with automatic numbering in HTML and CSS"
 date: 2020-9-1 <!--- Orginally published on 2020-8-6 --->
 ---
+**Updated!** Now includes automatic numbering.
+{: .notice--success}
+
+To jump to the section with the code, **click [here](#the-code)**.
+{: .notice}
+
 <!--- Minimal-mistakes has traditional footnotes. See here for example: https://mmistakes.github.io/minimal-mistakes/docs/layouts/#fnref:sidebar-menu
 
 The inline code looks like this:
@@ -10,11 +16,6 @@ The inline code looks like this:
 To create a sidebar menu[^sidebar-menu] similar to the one found in the theme's documentation pages you'll need to modify a `_data` file and some YAML Front Matter.
 
 [^sidebar-menu]: Sidebar menu supports 1 level of nested links.--->
-**Updated!** Now includes automatic numbering.
-{: .notice--success}
-
-To jump to the section with the code, **click [here](#the-code)**.
-{: .notice}
 
 I really enjoy reading the blog [FiveThirtyEight](https://fivethirtyeight.com/) for the data-driven reporting on politics, sports, and life. It is also the first place I recall encountering inline footnotes some time back in 2017. I remember being way too impressed when I clicked on a footnote, the remaining article text lowered creating a blank space, and the footnote appeared out of thin air. Now that I have my own blog, I want to give my reads the same pleasurable experience. Since I don't know JavaScript, which FiveThirtyEight uses for their inline footnotes, my goal is to use HTML and CSS. In this post, I share what I've found for those who want to do something similar.
 
