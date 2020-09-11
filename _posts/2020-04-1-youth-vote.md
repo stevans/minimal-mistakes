@@ -10,6 +10,7 @@ After Super Tuesday, young voters were frequently scapegoated by media outlets f
 <iframe title="Youth voter turnout in Democratic Primaries has dropped in terms of percentages" aria-label="Table" id="datawrapper-chart-xoMeU" src="//datawrapper.dwcdn.net/xoMeU/2/" scrolling="no" frameborder="0" style="background: #FFFFFF; width: 0; min-width: 100% !important; border: none;" height="774"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"])for(var e in a.data["datawrapper-height"]){var t=document.getElementById("datawrapper-chart-"+e)||document.querySelector("iframe[src*='"+e+"']");t&&(t.style.height=a.data["datawrapper-height"][e]+"px")}})}();
 </script>
 
+<!--- Added "background: #FFFFFF;" after style=" to secure a solid white background --->
 
 <!--- {% include figure image_path="/assets/images/posts/youth-vote/youth_voter_turnout_wtitle.png" alt="Three column table showing youth voter turnout in 2016 and 2020 and the difference." width="200" caption="Voter Turnout for 18-29 year-olds in Democratic Presidential Primaries. Sources: [[1]](https://www.cnn.com/election/2016/primaries/polls/) [[2]](https://www.cnn.com/election/2020/entrance-and-exit-polls/)" %} --->
 
