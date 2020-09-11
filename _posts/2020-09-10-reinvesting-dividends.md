@@ -3,7 +3,7 @@ layout: single
 title:  "Quantifying the value of reinvesting dividends"
 date:   2020-09-11
 ---
-I’ve always been interested in finance and investing. This might have something to do with being raised by an accountant who would often preach the virtues of saving for retirement, but I’m not sure. My interest even led me to give a talk to my friends in the UT astronomy department titled [Do You Want to Buy A Yacht?: Saving for retirement 101](https://github.com/OttoStruve/gsps/blob/gh-pages/slides/stevans_retirement.pdf) for fun. 
+I’ve always been fascinated by finance and investing. This might have something to do with being raised by an accountant who would often preach the virtues of saving for retirement, but I’m not sure. My interest even led me to give a talk to my friends in the UT astronomy department titled [Do You Want to Buy A Yacht?: Saving for retirement 101](https://github.com/OttoStruve/gsps/blob/gh-pages/slides/stevans_retirement.pdf) for fun. 
 
 Anyway, a few years ago I discovered “robo advisors” or computer applications that leverage automation and algorithms to manage your investments with increased efficiency. One feature that stood out to me was the ability to automatically reinvest earned dividends. Well, I was surprised to see that some roboadvisor brokerage sites like [M1 Finances](https://www.m1finance.com/) did not display the historical performance of stocks and funds assuming dividends were automatically reinvested.
 

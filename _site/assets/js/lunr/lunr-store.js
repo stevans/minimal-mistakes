@@ -24,7 +24,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Quantifying the value of reinvesting dividends",
-        "excerpt":"I’ve always been interested in finance and investing. This might have something to do with being raised by an accountant who would often preach the virtues of saving for retirement, but I’m not sure. My interest even led me to give a talk to my friends in the UT astronomy...","categories": [],
+        "excerpt":"I’ve always been fascinated by finance and investing. This might have something to do with being raised by an accountant who would often preach the virtues of saving for retirement, but I’m not sure. My interest even led me to give a talk to my friends in the UT astronomy...","categories": [],
         "tags": [],
         "url": "http://localhost:4000/reinvesting-dividends/",
         "teaser": null
