@@ -11,7 +11,7 @@ This made me wonder, how would these historical performance plots look if divide
 
 To answer these questions I first had to gain access to stock data. After a bit of searching, I found a service called [Tiingo](https://www.tiingo.com/) that provides daily stock data via the python API [pandas-datareader](https://pandas-datareader.readthedocs.io/en/latest/index.html). <input type="checkbox" id="version" /><label for="version"><sup></sup></label><span>Version 0.7.0</span>
 
-If you want to see the code I wrote to wrangle, analyze, and visualize the data, check out [**this Python Jupyter Notebook**](https://github.com/stevans/bernie-texas-2020/tree/master/notebooks) on my GitHub page. 
+If you want to see the code I wrote to wrangle, analyze, and visualize the data, check out [**this Python Jupyter Notebook**](https://github.com/stevans/reinvesting-dividends/blob/master/notebooks/1.0-mls-reinvesting-dividends_v2.ipynb) on my GitHub page. 
 {: .notice--primary}
 
 
