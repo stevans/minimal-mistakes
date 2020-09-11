@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Using US Census APIs to investigate the drop in youth-voter turnout in 2020"
+title:  "Using US Census data to investigate the drop in youth-voter turnout in 2020"
 date:   2020-4-1
 ---
 

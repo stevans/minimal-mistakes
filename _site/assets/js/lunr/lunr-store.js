@@ -5,7 +5,7 @@ var store = [{
         "url": "http://localhost:4000/energy-of-photons/",
         "teaser": null
       },{
-        "title": "Using US Census APIs to investigate the drop in youth-voter turnout in 2020",
+        "title": "Using US Census data to investigate the drop in youth-voter turnout in 2020",
         "excerpt":"After Super Tuesday, young voters were frequently scapegoated by media outlets for Bernie Sanders’s loses in Super Tuesday contests like in this US Today article entitled, Many young voters sat out Super Tuesday, contributing to Bernie Sanders’ losses. Their reasoning was that a lot of polling before Super Tuesday showed...","categories": [],
         "tags": [],
         "url": "http://localhost:4000/youth-vote/",
@@ -23,7 +23,7 @@ var store = [{
         "url": "http://localhost:4000/sanders-tx-2020/",
         "teaser": null
       },{
-        "title": "Quantifying the value of reinvesting dividends",
+        "title": "Quantifying the value of reinvesting paid dividends",
         "excerpt":"I’ve always been fascinated by finance and investing. This might have something to do with being raised by an accountant who would often preach the virtues of saving for retirement, but I’m not sure. My interest even led me to give a talk to my friends in the UT astronomy...","categories": [],
         "tags": [],
         "url": "http://localhost:4000/reinvesting-dividends/",

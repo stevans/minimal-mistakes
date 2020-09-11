@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Quantifying the value of reinvesting dividends"
+title:  "Quantifying the value of reinvesting paid dividends"
 date:   2020-09-11
 ---
 I’ve always been fascinated by finance and investing. This might have something to do with being raised by an accountant who would often preach the virtues of saving for retirement, but I’m not sure. My interest even led me to give a talk to my friends in the UT astronomy department titled [Do You Want to Buy A Yacht?: Saving for retirement 101](https://github.com/OttoStruve/gsps/blob/gh-pages/slides/stevans_retirement.pdf) for fun. 
@@ -10,6 +10,9 @@ Anyway, a few years ago I discovered “robo advisors” or computer application
 This made me wonder, how would these historical performance plots look if dividend reinvestment was included? What is the potential value of reinvesting dividends with a stock or market fund with an average dividend? And, how would reinvesting dividends affect the returns of other popular investments like bonds or funds of high dividend stocks? I aimed to answer these question in this blog post.
 
 To answer these questions I first had to gain access to stock data. After a bit of searching, I found a service called [Tiingo](https://www.tiingo.com/) that provides daily stock data via the python API [pandas-datareader](https://pandas-datareader.readthedocs.io/en/latest/index.html). <input type="checkbox" id="version" /><label for="version"><sup></sup></label><span>Version 0.7.0</span>
+
+If you want to see the code I wrote to wrangle, analyze, and visualize the data, check out [**this Python Jupyter Notebook**](https://github.com/stevans/bernie-texas-2020/tree/master/notebooks) on my GitHub page. 
+{: .notice--primary}
 
 
 With Tiingo (and after signing up for an account and API token) I pulled the date, stock price, and dividend payment data.
@@ -42,7 +45,7 @@ The right column of this figure shows that the ETFs' components of gains from re
 
 The figure also shows that the size of the reinvested-dividends component seems to be correlated more with the size of capital-only component than the size of dividend-only component. <input type="checkbox" id="cor" /><label for="cor"><sup></sup></label><span>In fact, the reinvested-dividends component is strongly correlated with the capital-only component (with an r correlation coefficient of 0.89) and is moderately anti-correlated with the dividends-only component (with an r correlation coefficient of -0.55).</span> At first, I was a little surprised by this since at face value I thought funds with larger dividends would be more impacted by dividend reinvesting. But now it make sense to me given that (again) gains from reinvesting dividends are fundamentally a multiplication of the capital-only gains and the dividends-only gains and that the ETFs with the largest capital-only gains (~12%) have decent dividends-only gains (~1.5%) while the ETFs with largest dividends-only gains (~2-3%) have relatively small capital-only gains (~2-5%) (i.e., `0.12*0.015=0.0018` is greater than `0.025*0.04=0.001`). This means that people invested in growth or all market funds have more to gain by reinvesting dividends than those invested in bond or dividend funds.
 
-Here are the take aways from this post:
+Here are the main take aways from this post:
 1. Reinvesting the dividends of an all market ETF like VTI can grow your initial investment by 20% over ten years--7% more than if you kept your earned dividends in cash with no inflation.
 2. People invested in a typical Vanguard ETF can grow their investment by an additional 0.3% annually by reinvesting their dividends.
 3. If you use a roboadvisor, the average benefit of automatic dividend reinvesting will likely be cancelled out by the roboadvisor fee.

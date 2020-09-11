@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Quantifying the value of reinvesting dividends - From Galaxy Science to Data Science</title>
+<!-- begin _includes/seo.html --><title>Quantifying the value of reinvesting paid dividends - From Galaxy Science to Data Science</title>
 <meta name="description" content="I’ve always been fascinated by finance and investing. This might have something to do with being raised by an accountant who would often preach the virtues of saving for retirement, but I’m not sure. My interest even led me to give a talk to my friends in the UT astronomy department titled Do You Want to Buy A Yacht?: Saving for retirement 101 for fun.  ">
 
 
@@ -19,7 +19,7 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="From Galaxy Science to Data Science">
-<meta property="og:title" content="Quantifying the value of reinvesting dividends">
+<meta property="og:title" content="Quantifying the value of reinvesting paid dividends">
 <meta property="og:url" content="http://localhost:4000/reinvesting-dividends/">
 
 
@@ -289,7 +289,7 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Quantifying the value of reinvesting dividends">
+    <meta itemprop="headline" content="Quantifying the value of reinvesting paid dividends">
     <meta itemprop="description" content="I’ve always been fascinated by finance and investing. This might have something to do with being raised by an accountant who would often preach the virtues of saving for retirement, but I’m not sure. My interest even led me to give a talk to my friends in the UT astronomy department titled Do You Want to Buy A Yacht?: Saving for retirement 101 for fun.">
     <meta itemprop="datePublished" content="2020-09-11T00:00:00-05:00">
     
@@ -297,7 +297,7 @@
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">Quantifying the value of reinvesting dividends
+          <h1 id="page-title" class="page__title" itemprop="headline">Quantifying the value of reinvesting paid dividends
 </h1>
           
             <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
@@ -321,6 +321,8 @@
 <p>This made me wonder, how would these historical performance plots look if dividend reinvestment was included? What is the potential value of reinvesting dividends with a stock or market fund with an average dividend? And, how would reinvesting dividends affect the returns of other popular investments like bonds or funds of high dividend stocks? I aimed to answer these question in this blog post.</p>
 
 <p>To answer these questions I first had to gain access to stock data. After a bit of searching, I found a service called <a href="https://www.tiingo.com/">Tiingo</a> that provides daily stock data via the python API <a href="https://pandas-datareader.readthedocs.io/en/latest/index.html">pandas-datareader</a>. <input type="checkbox" id="version" /><label for="version"><sup></sup></label><span>Version 0.7.0</span></p>
+
+<p class="notice--primary">If you want to see the code I wrote to wrangle, analyze, and visualize the data, check out <a href="https://github.com/stevans/bernie-texas-2020/tree/master/notebooks"><strong>this Python Jupyter Notebook</strong></a> on my GitHub page.</p>
 
 <p>With Tiingo (and after signing up for an account and API token) I pulled the date, stock price, and dividend payment data.</p>
 
@@ -352,7 +354,7 @@
 
 <p>The figure also shows that the size of the reinvested-dividends component seems to be correlated more with the size of capital-only component than the size of dividend-only component. <input type="checkbox" id="cor" /><label for="cor"><sup></sup></label><span>In fact, the reinvested-dividends component is strongly correlated with the capital-only component (with an r correlation coefficient of 0.89) and is moderately anti-correlated with the dividends-only component (with an r correlation coefficient of -0.55).</span> At first, I was a little surprised by this since at face value I thought funds with larger dividends would be more impacted by dividend reinvesting. But now it make sense to me given that (again) gains from reinvesting dividends are fundamentally a multiplication of the capital-only gains and the dividends-only gains and that the ETFs with the largest capital-only gains (~12%) have decent dividends-only gains (~1.5%) while the ETFs with largest dividends-only gains (~2-3%) have relatively small capital-only gains (~2-5%) (i.e., <code class="language-plaintext highlighter-rouge">0.12*0.015=0.0018</code> is greater than <code class="language-plaintext highlighter-rouge">0.025*0.04=0.001</code>). This means that people invested in growth or all market funds have more to gain by reinvesting dividends than those invested in bond or dividend funds.</p>
 
-<p>Here are the take aways from this post:</p>
+<p>Here are the main take aways from this post:</p>
 <ol>
   <li>Reinvesting the dividends of an all market ETF like VTI can grow your initial investment by 20% over ten years–7% more than if you kept your earned dividends in cash with no inflation.</li>
   <li>People invested in a typical Vanguard ETF can grow their investment by an additional 0.3% annually by reinvesting their dividends.</li>
@@ -379,7 +381,7 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Quantifying+the+value+of+reinvesting+dividends%20http%3A%2F%2Flocalhost%3A4000%2Freinvesting-dividends%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Quantifying+the+value+of+reinvesting+paid+dividends%20http%3A%2F%2Flocalhost%3A4000%2Freinvesting-dividends%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Freinvesting-dividends%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
@@ -484,7 +486,7 @@
     
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="/youth-vote/" rel="permalink">Using US Census APIs to investigate the drop in youth-voter turnout in 2020
+        <a href="/youth-vote/" rel="permalink">Using US Census data to investigate the drop in youth-voter turnout in 2020
 </a>
       
     </h2>
